@@ -1,0 +1,130 @@
+﻿<style>
+.head{ margin-top:-12px;}
+</style>
+<div class="head">
+<div class="content-block">
+<div class="logo"><a href="/">饭麻网</a></div>
+<div class="userbar">
+<div class="login hidden">
+</div>
+<div class="logout" id="_userlogin">
+<a href="javascript:vote2(-1)">登录</a>
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a>
+
+</div> 
+
+<!-- /userlogin -->
+
+<script>
+	function timeclear(){
+	window.onerror=function(){return true;};
+	}
+	var tcr=setInterval("timeclear();",3000); 
+</script>
+<script>
+	function CheckLogin2(){
+	  var taget_obj = document.getElementById('_userlogin');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_loginsta.php");
+	  DedeXHTTP = null;
+	}
+	
+	function PostComment(mgid)
+{
+		var f = document.getElementById('feedback'+mgid);
+		var msg = document.getElementById('commentc'+mgid).value;
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew'+mgid);
+		var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+
+		if(msg==''||msg==null||msg.length==0||msg=='请不要发表与本内容无关的评论，您有了账号就是有身份的人了，我们可认识您。')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(msg.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked){
+				nfeedbacktype = f.feedbacktype[i].value;
+				}
+		}
+		/*
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		*/
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', mgid);
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', msg);
+		myajax.SendPost2('/plus/feedback_ajax.php');
+		//msg = '';
+		document.getElementById('commentc'+mgid).value='';
+		
+		//taget_obj.removeAttribute('id');
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+}
+</script>
+<script>CheckLogin2();</script>
+</div>
+</div>
+</div>
+</div>
+<div class="menu-bar clearfix">
+<div class="content-block">
+<div class="menu">
+<ul>
+<li class="menuout"><a href="/">最新</a></li>
+<li class="menuout" onMouseOver="this.className='menuover'" onMouseOut="this.className='menuout'">
+<a href="/click_week" class="submenutitle">人气</a>
+<a href="/click_week" class="submenu">7天内</a>
+<a href="/click_month" class="submenu">30天内</a>
+</li>
+
+<li class="menuout"><a href='/list-2.html' >文字</a></li>
+<li class="menuout"><a href='/list-19.html' >视频</a></li>
+<li class="menuout"><a href='/list-28.html' >图片</a></li>
+<li class="menuout"><a href='/member/add.php' >发表</a></li>
+<li class="menuout"><a id='highlight' href='/member/' >麻友</a></li>
+</ul>
+</div>
+<div class="search">
+<form action="http://www.google.com.hk/cse" id="cse-search-box">
+<input type="hidden" name="cx" value="partner-pub-4939841000086153:4566343055" />
+<input type="hidden" name="ie" value="UTF-8" />
+<input type="text" name="q" size="32" class="input-box"/>
+<input type="submit" name="sa" value="搜索" class="button-box"/>
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=zh-Hans"></script>
+</div>
+</div>
+</div>

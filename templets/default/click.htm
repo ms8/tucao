@@ -1,0 +1,568 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script language="javascript"> 
+
+<!--屏蔽JS错误  
+
+function killerrors() { 
+
+return true; 
+
+} 
+
+window.onerror = killerrors; 
+
+//--> 
+
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>人气排行-{dede:global.cfg_webname/}</title>
+
+<link rel="shortcut icon" href="{dede:global.cfg_basehost/}/favicon.ico" />
+
+<link href='{dede:global.cfg_templets_skin/}/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_templets_skin/}/css/css.css"/>
+
+<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+<!--
+
+function CheckLogin(tid){
+
+LoadCommets(tid);
+
+if(document.getElementById('qbpl'+tid).className=='comments'){
+
+	  document.getElementById('qbpl'+tid).className='login';
+
+}else{
+
+	  document.getElementById('qbpl'+tid).className='comments';
+
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	  myajax.SendGet2("{dede:global.cfg_cmsurl/}/member/ajax_feedback.php?aid="+tid);
+
+	  DedeXHTTP = null;
+
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+
+}
+
+
+
+}
+
+
+
+function postBadGood(ftype,fid)
+
+{
+
+	var taget_obj = document.getElementById(ftype+fid);
+
+	var saveid = GetCookie('badgoodid');
+
+	if(saveid != null)
+
+	{
+
+		var saveids = saveid.split(',');
+
+		var hasid = false;
+
+		saveid = '';
+
+		j = 1;
+
+		for(i=saveids.length-1;i>=0;i--)
+
+		{
+
+			if(saveids[i]==fid && hasid) continue;
+
+			else {
+
+				if(saveids[i]==fid && !hasid) hasid = true;
+
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+
+				j++;
+
+				if(j==10 && hasid) break;
+
+				if(j==9 && !hasid) break;
+
+			}
+
+		}
+
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+
+		else saveid += ','+fid;
+
+		SetCookie('badgoodid',saveid,1);
+
+	}
+
+	else
+
+	{
+
+		SetCookie('badgoodid',fid,1);
+
+	}
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	myajax.SendGet2("{dede:field name='phpurl'/}/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+
+}
+
+function postDigg(ftype,aid)
+
+{
+
+	var taget_obj = document.getElementById('newdigg'+aid);
+
+	var saveid = GetCookie('diggid');
+
+	if(saveid != null)
+
+	{
+
+		var saveids = saveid.split(',');
+
+		var hasid = false;
+
+		saveid = '';
+
+		j = 1;
+
+		for(i=saveids.length-1;i>=0;i--)
+
+		{
+
+			if(saveids[i]==aid && hasid) continue;
+
+			else {
+
+				if(saveids[i]==aid && !hasid) hasid = true;
+
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+
+				j++;
+
+				if(j==20 && hasid) break;
+
+				if(j==19 && !hasid) break;
+
+			}
+
+		}
+
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+
+		else saveid += ','+aid;
+
+		SetCookie('diggid',saveid,1);
+
+	}
+
+	else
+
+	{
+
+		SetCookie('diggid',aid,1);
+
+	}
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	var url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action="+ftype+"&id="+aid;
+
+	myajax.SendGet2(url);
+
+}
+
+function getDigg(aid)
+
+{
+
+	var taget_obj = document.getElementById('newdigg'+aid);
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	myajax.SendGet2("{dede:global.cfg_phpurl/}/digg_ajax.php?id="+aid);
+
+	DedeXHTTP = null;
+
+}
+
+function SharePanel(tid,types,urls)
+
+{
+
+   var sbtitle=document.getElementById("share_"+tid);
+
+  if(sbtitle){
+
+     if(sbtitle.style.display=='block'){
+
+       sbtitle.style.display='none';
+
+     }else{
+
+       sbtitle.style.display='block';
+
+     }
+
+  }
+
+}
+
+-->
+
+</script>
+
+</head>
+
+<body>
+
+<a name="top"></a>
+
+<div class="head">
+
+<div class="content-block">
+
+<div class="logo"><a href="/">{dede:global.cfg_webname/}</a></div>
+
+<div class="userbar">
+
+<div class="login hidden">
+
+</div>
+
+<div class="logout" id="_userlogin">
+
+<a href="javascript:vote2(-1)">登录</a>
+
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a>
+
+</div> 
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="menu-bar clearfix">
+
+<div class="content-block">
+
+<div class="menu">
+
+<ul>
+
+<li class="menuout"><a id='highlight' href="/">标签</a></li>
+
+<li class="menuout" onMouseOver="this.className='menuover'" onMouseOut="this.className='menuout'">
+
+<a href="/click_week" class="submenutitle">人气</a>
+
+<a href="/click_week" class="submenu">7天内</a>
+
+<a href="/click_month" class="submenu">30天内</a>
+
+</li>
+
+{dede:channel row='5' type='top' currentstyle="<li class='menuout'><a id='highlight' href='~typelink~' ~rel~>~typename~</a></li>"}
+
+<li class="menuout"><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>{/dede:channel}
+
+</ul>
+
+</div>
+
+<div class="search">
+<form id="formsearch" name="formsearch" action="/plus/search.php">
+<input type="hidden" value="0" name="kwtype">
+<input name="q" type="text" class="input-box" id="search-keyword" value="输入关键字..." onfocus="if(this.value=='输入关键字...'){this.value='';}"  onblur="if(this.value==''){this.value='输入关键字...';}" />
+<input type="submit" name="sa" value="搜索" class="button-box"/>
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="content-block">
+
+<div class="col1">
+
+{dede:freelist/}
+
+
+
+<div class="pagebar">
+
+{dede:pagelist istitem='pre,next,' listsize='2' /}
+
+</div>
+
+</div>
+
+<div class="col2">
+
+<div class="sponsor">
+<script src='/plus/ad_js.php?aid=21' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="microblog">
+
+<h3>收听</h3>
+
+<div class="content">
+
+<a href="http://user.qzone.qq.com/1492495058" target="_blank">QQ空间<span>610<em>万</em></span></a><a href="http://t.qq.com/qiushibaike" target="_blank">腾讯微博<span>145<em>万</em></span></a><a href="http://weibo.com/qiushibaike" target="_blank">新浪微博<span>55<em>万</em></span></a><a href="http://mail.qq.com/cgi-bin/bookcol?colid=314" target="_blank">Feed订阅<span>360<em>万</em></span></a>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sponsor">
+
+<script src='/plus/ad_js.php?aid=22' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="tagsblock">
+
+<h3>标签</h3>
+
+<div class="content">
+
+<a href="/tags.php?/伤不起/" rel="tag">伤不起</a>
+
+<a href="/tags.php?/jj/" rel="tag">JJ</a>
+
+<a href="/tags.php?/校园/" rel="tag">校园</a>
+
+<a href="/tags.php?/围观/" rel="tag">围观</a>
+
+<a href="/tags.php?/ML/" rel="tag">ML</a>
+
+<a href="/tags.php?/美女/" rel="tag">美女</a>
+
+<a href="/tags.php?/车震/" rel="tag">车震</a>
+
+<a href="/tags.php?/火星文/" rel="tag">火星文</a>
+
+<a href="/tags.php?/非主流/" rel="tag">非主流</a>
+
+<a href="/tags.php?/一句话不割/" rel="tag">一句话不割</a>
+
+<a href="/tags.php?/穿越/" rel="tag">穿越</a>
+
+<a href="/tags.php?/打飞机/" rel="tag">打飞机</a>
+
+<a href="/tags.php?/秒杀/" rel="tag">秒杀</a>
+
+<a href="/tags.php?/萝莉/" rel="tag">萝莉</a>
+
+<a href="/tags.php?/hold/" rel="tag">hold</a>
+
+<a href="/tags.php?/腐女/" rel="tag">腐女</a>
+
+<a href="/tags.php?/小三/" rel="tag">小三</a>
+
+<a href="/tags.php?/TT/" rel="tag">TT</a>
+
+<a href="/tags.php?/萌/" rel="tag">御姐</a>
+
+<!--a href="/tags.php?/伤不起/" rel="tag">萌</a-->
+
+<a href="/tags.php?/mm/" rel="tag">mm</a>
+
+<a href="/tags.php?/二奶/" rel="tag">二奶</a>
+
+<a href="/tags.php?/正太/" rel="tag">正太</a>
+
+<a href="/tags.php">更多...</a>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sponsor">
+
+<script src='/plus/ad_js.php?aid=23' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sitelink">
+
+<h3>友情链接</h3>
+
+<div class="content">
+
+{dede:flink linktype='2' row='100'}[field:link /]{/dede:flink}
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div id="box">
+
+<div id="float" class="div1">
+
+<div id="float-ad" class="sponsor">
+<script src='/plus/ad_js.php?aid=24' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="toolbar">
+
+<a href="#top" class="back">回到顶部</a><a href="javascript:showSuggestForm()" class="feedback">意见建议</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="baidu-sponsor">
+
+<script src='/plus/ad_js.php?aid=25' language='javascript'></script>
+
+</div>
+
+</div>
+
+</div>
+
+{dede:include filename="foot.htm"/}
+
+<div id="login-form">
+
+<a href="#" class="close"><div class="bti"></div></a>
+
+<div class="ie6-fix"></div>
+
+<div class="col1">
+
+<h1>欢迎回来</h1>
+
+<div class="inputbox">
+
+<form name="userlogin" id="userlogin" action="{dede:global.cfg_memberurl/}/index_do.php" method="POST">
+
+<input type="hidden" name="fmdo" value="login" />
+
+<input type="hidden" name="dopost" value="login" />
+
+<input type="hidden" name="keeptime" value="604800" />
+
+<label for="login">用户名</label>
+
+<input type="text" tabindex="1" name="userid" id="login" class="Txt1" value="" onfocus="if(value=='') {value=''}" onblur="if(value=='') {value=''}"/>
+
+<label for="password">密码：(<a href="/member/resetpassword.php">忘记密码？</a>)</label>
+
+<input type="password" tabindex="2" name="pwd" id="password" class="Txt2" value="" onfocus="if(value=='') {value=''}" onblur="if(value=='') {value=''}"/>
+
+</div>
+
+<!--<div id="error"></div>-->
+
+<div class="optionbox"><label for='remember_me'><input type="checkbox" value="checked" checked name="remember_me" id="remember_me"> 记住我</label></div>
+
+<button type="submit">登录</button>
+
+</form>
+
+</div>
+
+<div class="col2">
+
+<h1>创建账号</h1>
+
+<div class="intro">
+
+强热推荐用QQ一键登录、一键注册、方便又省时。<br/><br/>
+
+<a href="javascript:vod(0);" onclick='toQzoneLogin()'><img src="/plus/qzonelogin/img/qq_login.png"></a></div>
+
+<a href="/member/index_do.php?fmdo=user&dopost=regnew" class="button">注册</a>
+
+</div>
+
+</div>
+
+<div id="suggest-form">
+
+<a href="#" class="close"><div class="bti"></div></a>
+
+<div class="ie6-fix"></div>
+
+<div class="form-block">
+
+<h1>请帮助我们进步</h1>
+
+<form method="post" action="/plus/guestbook.php" id="form1">
+
+<input type='hidden' name='action' value='save' /> 
+
+<textarea type="text" id="suggest-text" name="msg" tabindex="1"></textarea>
+
+<button type="submit" onclick="document.getElementById('form1').submit();" >提交</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+<script src="{dede:global.cfg_basehost/}/templets/default/js/application.js?v=b3c1e" type="text/javascript"></script>
+
+<script>function CheckLogin2(){var taget_obj=document.getElementById('_userlogin');myajax=new DedeAjax(taget_obj,false,false,'','','');myajax.SendGet2("{dede:global.cfg_cmspath/}/member/ajax_loginsta.php");DedeXHTTP=null};function PostComment(mgid){var f=document.getElementById('feedback'+mgid);var msg=document.getElementById('commentc'+mgid).value;var nface='6';var nfeedbacktype='feedback';var nvalidate='';var nnotuser='';var nusername='';var npwd='';var taget_obj=$DE('commetcontentNew'+mgid);var waithtml="<div style='line-height:30px'><img src='{dede:global.cfg_cmsurl/}/images/loadinglit.gif' />正在发送中...</div>";if(msg==''||msg==null||msg.length==0||msg=='请不要发表与本内容无关的评论，您有了账号就是有身份的人了，我们可认识您。'){alert("评论内容不能为空！");return};if(msg.length>500){alert("你的评论是不是太长了？请填写500字以内的评论。");return};if(f.feedbacktype){for(var i=0;i<f.feedbacktype.length;i++)if(f.feedbacktype[i].checked){nfeedbacktype=f.feedbacktype[i].value}};if(f.notuser.checked)nnotuser='1';if(f.username)nusername=f.username.value;if(f.pwd)npwd=f.pwd.value;var myajax=new DedeAjax(taget_obj,false,true,'','',waithtml);myajax.sendlang='{dede:global.cfg_soft_lang/}';myajax.AddKeyN('dopost','send');myajax.AddKeyN('aid',mgid);myajax.AddKeyN('fid',f.fid.value);myajax.AddKeyN('face',nface);myajax.AddKeyN('feedbacktype',nfeedbacktype);myajax.AddKeyN('validate',nvalidate);myajax.AddKeyN('notuser',nnotuser);myajax.AddKeyN('username',nusername);myajax.AddKeyN('pwd',npwd);myajax.AddKeyN('msg',msg);myajax.SendPost2('{dede:global.cfg_phpurl/}/feedback_ajax.php');document.getElementById('commentc'+mgid).value='';f.fid.value=0;if(f.validate){if($DE('validateimg'))$DE('validateimg').src="{dede:global.cfg_cmsurl/}/include/vdimgck.php?"+f.validate.value;f.validate.value=''}}</script><script>CheckLogin2();</script><script>function LoadCommets(page){var taget_obj=document.getElementById('commetcontent'+page);var waithtml="<div style='line-height:50px'><img src='{dede:global.cfg_cmsurl/}/images/loadinglit.gif' />评论加载中...</div>";var myajax=new DedeAjax(taget_obj,true,true,'','x',waithtml);myajax.SendGet2("{dede:global.cfg_phpurl /}/feedback_ajax.php?dopost=getlist&aid="+page+"&page="+page);DedeXHTTP=null}</script>

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $cfg_webname; ?>- 会员注册</title>
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="templets/js/jquery.js" type="text/javascript"></script>
+<script src="/member/templets/js/jquery.placeholder.min.js?v=fee1e" type="text/javascript"></script>
+<script src="templets/js/base.js" language="javascript" type="text/javascript"></script>
+<script src='templets/js/CheckPassStrength.js' type="text/javascript" language="javascript"></script>
+<script type="text/javascript" language="javascript" src='templets/js/reg_new.js'></script>
+<script type="text/javascript" language="javascript">
+<!--
+var reMethod = "<?php echo ($cfg_soft_lang == 'utf-8') ? 'POST' : 'GET';?>",pwdmin = <?php echo $cfg_mb_pwdmin; ?>;
+
+function changeAuthCode() {
+	var num = 	new Date().getTime();
+	var rand = Math.round(Math.random() * 10000);
+	num = num + rand;
+	$('#ver_code').css('visibility','visible');
+	if ($("#vdimgck")[0]) {
+		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;
+	}
+	return false;	
+}
+
+function hideVc()
+{
+	$('#ver_code').css('visibility','hidden');
+}
+
+
+$(document).ready(function(){ 
+	$("#passwordLevel").removeClass().addClass("rank r0");
+	$("#vdcode").focus(function(){
+	  var leftpos = $("#vdcode").position().left;
+	  var toppos = $("#vdcode").position().top - 42;
+	  $('#ver_code').css('left', leftpos+'px');
+	  $('#ver_code').css('top', toppos+'px');
+	  $('#ver_code').css('visibility','visible');
+	});
+	$("input[type='password']").click(function(){
+	  hideVc()
+	});
+	$("#txtUsername").click(function(){
+	  hideVc()
+	});
+	$("input[type='radio']").focus(function(){
+	  hideVc()
+	});
+	/*
+	$("#vdcode").blur(function(){
+		  $('#ver_code').css('visibility','hidden');
+	});
+	*/
+})
+
+-->
+</script>
+<body>
+<div class="sign">
+<div class="logo"><a href="/" title="返回首页"></a></div>
+<div class="block">
+<!--<div id="error"></div>-->
+    <form method="post" action="reg_new.php" id="regUser" name="form2">
+      <input type="hidden" value="regbase" name="dopost"/>
+      <input type="hidden" value="1" name="step"/>
+      <input type="hidden" value="个人" name="mtype"/>
+<label>用户名</label>
+<input id="txtUsername" name="userid" type="text" placeholder="用户名"/>
+<label>用户笔名</label>
+<input id="uname" name="uname" type="text" placeholder="用户笔名"/>
+<label>密码</label>
+<input id="txtPassword" name="userpwd" type="password" onkeyup="setPasswordLevel(this, document.getElementById('passwordLevel'));" style="font-family: verdana;" placeholder="密码"/>
+
+<label>密码</label>
+<input id="userpwdok" name="userpwdok" type="password" placeholder="再次确认密码"/>
+<label>电子邮箱</label>
+<input id="email" name="email" type="text" placeholder="电子邮箱"/>
+<em id="_email">(每个电子邮箱只能注册一个帐号)</em>
+<button id="btnSignCheck" type="submit" name="submit">点击注册</button>
+</form>
+<div class="note">
+<a href="/member/resetpassword.php">找回密码</a> |
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册帐号，体验娱乐天地！</a>
+</div>
+</div>
+</div>
+<script> 
+$('input[placeholder], textarea[placeholder]').placeholder();
+</script>
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript"> 
+try {
+var pageTracker = _gat._getTracker("UA-8780108-1");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+</body>
+</html>

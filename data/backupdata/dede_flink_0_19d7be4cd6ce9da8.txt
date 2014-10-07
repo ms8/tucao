@@ -1,0 +1,1 @@
+INSERT INTO `dede_flink` VALUES('9','1','http://www.17558.net/','好东西分享','','','','1227772717','1','2');

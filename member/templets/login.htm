@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<script src="templets/js/j.js" language="javascript" type="text/javascript"></script><script type="text/javascript">function changeAuthCode() {	var num = 	new Date().getTime();	var rand = Math.round(Math.random() * 10000);	num = num + rand;	$('#ver_code').css('visibility','visible');	if ($("#vdimgck")[0]) {		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;	}	return false;}</script>
+</head>
+<body>
+<div class="sign">
+<div class="logo"><a href="/" title="返回首页"></a></div>
+<div class="block">
+<!--<div id="error"></div>-->
+
+    <form name='form1' method='POST' action='index_do.php'>      <input type="hidden" name="fmdo" value="login">      <input type="hidden" name="dopost" value="login">      <input type="hidden" name="gourl" value="<?php if(!empty($gourl)) echo $gourl;?>">
+<label>用户名</label>
+<input id="txtUsername" name="userid" type="text" placeholder="用户名"/>
+<label>密码</label>
+
+<input id="txtPassword" name="pwd" type="password" placeholder="密码"/>
+
+<button id="btnSignCheck" type="submit" name="submit">登录</button>
+</form>
+<div class="note">
+<a href="/member/resetpassword.php">找回密码</a> |
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册帐号，体验娱乐天地！</a>
+</div>
+</div>
+</div>
+</body>
+</html>

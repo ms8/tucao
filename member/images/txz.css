@@ -1,0 +1,312 @@
+ {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+SELECT {
+	FONT-SIZE: 12px
+}
+INPUT {
+	FONT-SIZE: 12px
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+A {
+	COLOR: #333; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #c42805; TEXT-DECORATION: underline
+}
+EM {
+	COLOR: #c42805; FONT-STYLE: normal
+}
+EM A {
+	COLOR: #c42805
+}
+BODY {
+	FONT-SIZE: 12px; BACKGROUND: #fff; COLOR: #333; FONT-FAMILY: Arial,"宋体"
+}
+DIV {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+FORM {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+UL {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+OL {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+LI {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+DL {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+DT {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+DD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+H1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+TABLE {
+	FONT-SIZE: 12px
+}
+TD {
+	FONT-SIZE: 12px
+}
+TR {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+TABLE {
+	MARGIN: 0px auto
+}
+IMG {
+	VERTICAL-ALIGN: top
+}
+.cDRed {
+	FONT-WEIGHT: bold; COLOR: #aa0000
+}
+A.cDRed:link {
+	FONT-WEIGHT: bold; COLOR: #aa0000
+}
+A.cDRed:visited {
+	FONT-WEIGHT: bold; COLOR: #aa0000
+}
+.cDRed3 {
+	COLOR: #036
+}
+A.cDRed3:link {
+	COLOR: #036
+}
+A.cDRed3:visited {
+	COLOR: #036
+}
+.cDRed2 {
+	COLOR: #fff
+}
+A.cDRed2:link {
+	COLOR: #fff
+}
+A.cDRed2:visited {
+	COLOR: #fff
+}
+.input {
+	BORDER-RIGHT: #e1e1e1 1px solid; BORDER-TOP: #666666 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #666666 1px solid; WIDTH: 125px; COLOR: #000; BORDER-BOTTOM: #e1e1e1 1px solid; HEIGHT: 16px
+}
+.input2 {
+	BORDER-RIGHT: #e1e1e1 1px solid; BORDER-TOP: #666666 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 12px; MARGIN-LEFT: 10px; BORDER-LEFT: #666666 1px solid; WIDTH: 202px; COLOR: #333; LINE-HEIGHT: 24px; BORDER-BOTTOM: #e1e1e1 1px solid; HEIGHT: 24px
+}
+.main {
+	MARGIN: 0px auto; WIDTH: 960px; HEIGHT: auto
+}
+#top {
+	BACKGROUND: url(main.gif) no-repeat 0px 0px; MARGIN: 10px auto 0px; WIDTH: 960px; HEIGHT: 65px
+}
+#top .logo {
+	MARGIN-TOP: 13px; FLOAT: left; MARGIN-LEFT: 10px; WIDTH: 163px; HEIGHT: auto
+}
+#top .txt {
+	MARGIN-TOP: 20px; FONT-SIZE: 14px; FLOAT: right; WIDTH: auto; COLOR: #999; MARGIN-RIGHT: 7px; HEIGHT: auto
+}
+#top .txt A {
+	COLOR: #999
+}
+#top .txt A:hover {
+	COLOR: #c30
+}
+.content {
+	MARGIN: 10px auto 0px; WIDTH: 960px; HEIGHT: auto
+}
+#conlf {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; WIDTH: 240px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 500px; TEXT-ALIGN: center
+}
+.lftop {
+	MARGIN: 5px auto 0px; WIDTH: 200px; BORDER-BOTTOM: #cacfd9 1px solid; HEIGHT: 30px
+}
+.lftop .tit {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #003366; LINE-HEIGHT: 30px; TEXT-ALIGN: center
+}
+.lfbox {
+	MARGIN: 15px auto 0px; WIDTH: 200px; LINE-HEIGHT: 22px; HEIGHT: auto
+}
+.lfbox2 {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN: 15px auto 0px; BORDER-LEFT: #ccc 1px solid; WIDTH: 200px; LINE-HEIGHT: 22px; BORDER-BOTTOM: #ccc 1px solid; HEIGHT: auto
+}
+#conrt {
+	FLOAT: right; WIDTH: 704px; HEIGHT: 480px; TEXT-ALIGN: center
+}
+.rttop {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; WIDTH: 702px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 80px
+}
+.box {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN-TOP: 8px; FLOAT: left; BORDER-LEFT: #ccc 1px solid; WIDTH: 345px; BORDER-BOTTOM: #ccc 1px solid; HEIGHT: 200px
+}
+.boxtp {
+	FLOAT: left; BACKGROUND-IMAGE: url(boxbg.jpg); WIDTH: 345px; HEIGHT: 30px
+}
+.tit2 {
+	MARGIN-TOP: 8px; FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; MARGIN-LEFT: 5px; WIDTH: auto; COLOR: #000
+}
+.tit2 A {
+	COLOR: #000
+}
+.tit2 A:hover {
+	COLOR: #f30
+}
+.boxtp2 {
+	FLOAT: left; WIDTH: 345px; LINE-HEIGHT: 31px; HEIGHT: 30px; BACKGROUND-COLOR: #f5f5f5
+}
+.boxmd {
+	MARGIN-TOP: 15px; FLOAT: left; WIDTH: 345px; HEIGHT: auto
+}
+.boxpic {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; FLOAT: left; MARGIN-LEFT: 12px; BORDER-LEFT: #ccc 1px solid; WIDTH: 73px; BORDER-BOTTOM: #ccc 1px solid; HEIGHT: 73px
+}
+.boxtxt {
+	FLOAT: left; MARGIN-LEFT: 20px; WIDTH: 212px; COLOR: #003366; LINE-HEIGHT: 19px; FONT-FAMILY: "宋体"; HEIGHT: 73px; TEXT-ALIGN: left
+}
+.boxtxt A {
+	COLOR: #003366
+}
+.boxtxt A:hover {
+	COLOR: #003366
+}
+.boxbtn {
+	MARGIN-TOP: 6px; FLOAT: left; WIDTH: 285px; LINE-HEIGHT: 22px; HEIGHT: auto; TEXT-ALIGN: right
+}
+.main2 {
+	BACKGROUND: url(bgtp.jpg) repeat-x; MARGIN: 0px auto; WIDTH: 100%; HEIGHT: auto
+}
+#top2 {
+	MARGIN: 0px auto; WIDTH: 900px; HEIGHT: 65px
+}
+#blk {
+	MARGIN: 0px auto; WIDTH: 830px; HEIGHT: 30px
+}
+#top2 .logo2 {
+	MARGIN-TOP: 13px; FLOAT: left; MARGIN-LEFT: 10px; WIDTH: auto; HEIGHT: auto
+}
+#top2 .txt2 {
+	MARGIN-TOP: 30px; FONT-SIZE: 12px; FLOAT: right; WIDTH: auto; COLOR: #999; MARGIN-RIGHT: 7px; HEIGHT: auto
+}
+#top2 .txt2 A {
+	COLOR: #999
+}
+#top2 .txt2 A:hover {
+	COLOR: #c30
+}
+.lglf {
+	MARGIN: 10px auto 0px; WIDTH: 900px; HEIGHT: auto
+}
+#conlf2 {
+	FLOAT: left; WIDTH: 474px; HEIGHT: auto; TEXT-ALIGN: center
+}
+#line2 {
+	FONT-SIZE: 0px; BACKGROUND-IMAGE: url(473.1.jpg); WIDTH: 474px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 1px
+}
+#box22 {
+	MARGIN-TOP: 20px; FLOAT: left; WIDTH: 474px; HEIGHT: 90px
+}
+.boxpic2 {
+	BORDER-RIGHT: #dfdfdf 1px solid; BORDER-TOP: #dfdfdf 1px solid; FLOAT: left; BORDER-LEFT: #dfdfdf 1px solid; WIDTH: 91px; BORDER-BOTTOM: #dfdfdf 1px solid; HEIGHT: 73px; TEXT-ALIGN: center
+}
+.boxtxt2 {
+	MARGIN-TOP: 10px; FLOAT: right; WIDTH: 350px; COLOR: #666666; LINE-HEIGHT: 22px; FONT-FAMILY: Arial,; HEIGHT: 73px; TEXT-ALIGN: left
+}
+#conrt2 {
+	FLOAT: right; WIDTH: 323px; HEIGHT: 470px; TEXT-ALIGN: center
+}
+#rt2tp {
+	FONT-SIZE: 0px; FLOAT: left; BACKGROUND-IMAGE: url(lg323.2.gif); WIDTH: 323px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 3px
+}
+#rt2btm {
+	FONT-SIZE: 0px; FLOAT: left; BACKGROUND-IMAGE: url(lg323.4.gif); WIDTH: 323px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 3px
+}
+#rt2mid {
+	FLOAT: left; BACKGROUND-IMAGE: url(lg323.1.gif); WIDTH: 323px; HEIGHT: 430px
+}
+#mdcion {
+	MARGIN: 30px auto 0px; WIDTH: 233px; HEIGHT: 30px
+}
+#mdcion .lf {
+	FLOAT: left; WIDTH: auto; LINE-HEIGHT: 30px
+}
+#mdcion .tx {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; WIDTH: 150px; COLOR: #000000; LINE-HEIGHT: 30px; TEXT-ALIGN: center
+}
+#mdcion2 {
+	MARGIN: 15px auto 0px; WIDTH: 255px; HEIGHT: 30px
+}
+#mdcion2 .lf {
+	FLOAT: left; WIDTH: auto; COLOR: #000; LINE-HEIGHT: 30px
+}
+#mdcion2 .tx {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; WIDTH: 150px; COLOR: #000000; LINE-HEIGHT: 30px; TEXT-ALIGN: center
+}
+#mdcion2 .yzm {
+	FLOAT: left; WIDTH: auto; LINE-HEIGHT: 22px; PADDING-TOP: 6px; TEXT-ALIGN: left
+}
+#footer {
+	CLEAR: both; BORDER-TOP: #f1f1f1 0px solid; FONT-SIZE: 12px; MARGIN: 0px auto; WIDTH: 900px; COLOR: #333; LINE-HEIGHT: 24px; PADDING-TOP: 10px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+#footer .a2 {
+	COLOR: #333; FONT-FAMILY: Arial,
+}
+#footer .a2 A:link {
+	COLOR: #333333
+}
+#footer .a2 A:visited {
+	COLOR: #333333
+}
+#footer .a2 A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+.line1px {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; COLOR: #8a8a8a; PADDING-TOP: 2px
+}
+.line1px_2 {
+	BORDER-RIGHT: #00a8ff 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #00a8ff 1px solid; PADDING-LEFT: 25px; BACKGROUND: url(standard_msg_warning.gif) #e2f5ff no-repeat 5px 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #00a8ff 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #00a8ff 1px solid
+}
+.line1px_3 {
+	BORDER-RIGHT: #f60 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #f60 1px solid; PADDING-LEFT: 25px; BACKGROUND: url(standard_msg_error.gif) #fff2e9 no-repeat 5px 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #f60 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #f60 1px solid
+}
+.line1px_4 {
+	BORDER-RIGHT: #00be00 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #00be00 1px solid; PADDING-LEFT: 25px; BACKGROUND: url(standard_msg_ok.gif) #e6ffe6 no-repeat 5px 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #00be00 1px solid; COLOR: #000; PADDING-TOP: 5px; BORDER-BOTTOM: #00be00 1px solid
+}
+.reginput2 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 14px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, "sans-serif;新宋体"; HEIGHT: 30px
+}
+.INPUT {
+	BORDER-RIGHT: #cecece 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #7c7c7c 1px solid; PADDING-LEFT: 6px; FONT-SIZE: 12px; BACKGROUND: url(s.gif) #ffffff no-repeat 0px 0px; FLOAT: left; PADDING-BOTTOM: 2px; BORDER-LEFT: #666 1px solid; WIDTH: 118px; COLOR: #0000ff; PADDING-TOP: 2px; BORDER-BOTTOM: #c3c3c3 1px solid
+}
+.btn {
+	BORDER-RIGHT: #666 1px solid; BORDER-TOP: #dcdcdc 1px solid; BORDER-LEFT: #dcdcdc 1px solid; WIDTH: 100px; COLOR: #cc0000; BORDER-BOTTOM: #666 1px solid; HEIGHT: 24px; BACKGROUND-COLOR: #ffffff
+}

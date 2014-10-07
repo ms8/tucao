@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script language="javascript"> 
+
+<!--屏蔽JS错误  
+
+function killerrors() { 
+
+return true; 
+
+} 
+
+window.onerror = killerrors; 
+
+//--> 
+
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>一个初级程序猿的吐槽：蜻蜓点水全不精通（做_快入职-程序员跳槽第一平台</title>
+
+<meta name="keywords" content="一个,初级,程序,猿,的,吐槽,"/>
+
+<meta name="description" content="困惑， 自身的情况： ------ 做过2年单片机软件开发，是32位的arm cortex-m3芯片，写过2个成熟产品的软件，软件的基本模型是通过can或者485接口采集和发送数据；通过LCD显示数据，配上按"/>
+
+<link rel="shortcut icon" href="http://127.0.0.1:8080/favicon.ico" />
+
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="all" href="/templets/default/css/css.css"/>
+
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+<!--
+
+function CheckLogin(tid){
+
+LoadCommets(tid);
+
+if(document.getElementById('qbpl'+tid).className=='comments'){
+
+	  document.getElementById('qbpl'+tid).className='login';
+
+}else{
+
+	  document.getElementById('qbpl'+tid).className='comments';
+
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	  myajax.SendGet2("/member/ajax_feedback.php?aid="+tid);
+
+	  DedeXHTTP = null;
+
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+
+}
+
+}
+
+function postBadGood(ftype,fid)
+
+{
+
+	var taget_obj = document.getElementById(ftype+fid);
+
+	var saveid = GetCookie('badgoodid');
+
+	if(saveid != null)
+
+	{
+
+		var saveids = saveid.split(',');
+
+		var hasid = false;
+
+		saveid = '';
+
+		j = 1;
+
+		for(i=saveids.length-1;i>=0;i--)
+
+		{
+
+			if(saveids[i]==fid && hasid) continue;
+
+			else {
+
+				if(saveids[i]==fid && !hasid) hasid = true;
+
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+
+				j++;
+
+				if(j==10 && hasid) break;
+
+				if(j==9 && !hasid) break;
+
+			}
+
+		}
+
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+
+		else saveid += ','+fid;
+
+		SetCookie('badgoodid',saveid,1);
+
+	}
+
+	else
+
+	{
+
+		SetCookie('badgoodid',fid,1);
+
+	}
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+
+}
+
+function postDigg(ftype,aid)
+
+{
+
+	var taget_obj = document.getElementById('newdigg'+aid);
+
+	var saveid = GetCookie('diggid');
+
+	if(saveid != null)
+
+	{
+
+		var saveids = saveid.split(',');
+
+		var hasid = false;
+
+		saveid = '';
+
+		j = 1;
+
+		for(i=saveids.length-1;i>=0;i--)
+
+		{
+
+			if(saveids[i]==aid && hasid) continue;
+
+			else {
+
+				if(saveids[i]==aid && !hasid) hasid = true;
+
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+
+				j++;
+
+				if(j==20 && hasid) break;
+
+				if(j==19 && !hasid) break;
+
+			}
+
+		}
+
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+
+		else saveid += ','+aid;
+
+		SetCookie('diggid',saveid,1);
+
+	}
+
+	else
+
+	{
+
+		SetCookie('diggid',aid,1);
+
+	}
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+
+	myajax.SendGet2(url);
+
+}
+
+function getDigg(aid)
+
+{
+
+	var taget_obj = document.getElementById('newdigg'+aid);
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+
+	DedeXHTTP = null;
+
+}
+
+function SharePanel(tid,types,urls)
+
+{
+
+   var sbtitle=document.getElementById("share_"+tid);
+
+  if(sbtitle){
+
+
+
+     if(sbtitle.style.display=='block'){
+
+       sbtitle.style.display='none';
+
+     }else{
+
+       sbtitle.style.display='block';
+
+     }
+
+  }
+
+}
+
+-->
+
+</script>
+
+</head>
+
+<body>
+
+<a name="top"></a>
+
+<div class="head">
+
+<div class="content-block">
+
+<div class="logo"><a href="/">快入职-程序员跳槽第一平台</a></div>
+
+<div class="userbar">
+
+<div class="login hidden">
+
+</div>
+
+<div class="logout" id="_userlogin">
+
+<a href="javascript:vote2(-1)">登录</a>
+
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="menu-bar clearfix">
+
+<div class="content-block">
+
+<div class="menu">
+
+<ul>
+
+<li><a href='/plus/diy.php?action=list&diyid=1' >曝工资</a></li><li><a href='/plus/list.php?tid=1' >猿吐槽</a></li>
+
+</ul>
+
+</div>
+
+<div class="search">
+
+<form id="formsearch" name="formsearch" action="/plus/search.php">
+<input type="hidden" value="0" name="kwtype">
+<input name="q" type="text" class="input-box" id="search-keyword" value="输入关键字..." onfocus="if(this.value=='输入关键字...'){this.value='';}"  onblur="if(this.value==''){this.value='输入关键字...';}" />
+<input type="submit" name="sa" value="搜索" class="button-box"/>
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="content-block">
+
+<div class="col1">
+
+<div class="block untagged" id='qiushi_tag_13'>
+
+<div class="detail1"><a href="[field:arcurl/]" title="[field:title /]" target="_blank"></a></div>
+
+ <div class="author">
+
+<img src="/member/templets/images/dfboy.png" width="50" height="50"/>
+
+<!--<a href="/member/index.php?uid=gqlshare" target="_blank">gqlshare</a>-->
+匿名
+
+</div>
+
+<div class="content" title="一个初级程序猿的吐槽：蜻蜓点水全不精通（做">
+
+<p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); line-height: 22px; font-family: 'Times New Roman'; font-size: medium;"> 困惑，<span style="padding: 0px; margin: 0px; line-height: normal;">自身的情况：</span></p> <p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;"> <span style="padding: 0px; margin: 0px; font-family: 'Times New Roman'; font-size: medium; line-height: normal;">------</span></p> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">做过2年单片机软件开发，是32位的arm cortex-m3芯片，写过2个成熟产品的软件，软件的基本模型是通过can或者485接口采集和发送数据；通过LCD显示数据，配上按键扫描和简单的菜单界面；以及GPIO控制的继电器。还搭载了ucos。</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">但我的局限是，仅停留在使用芯片厂商提供的库函数进行硬件配置。对芯片的内部工作机制不理解，所以遇到复杂的外设很难直接配置寄存器。</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">------</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">没有继续深入下去，然后跳槽做Linux驱动。工作内容是维护字符设备驱动。几乎没有写过全新的代码，只是在原有的代码基础上，做与硬件适配的配置。</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">即便如此简单的内容，也是在用了整整一年的时间，理解了字符设备驱动（包括char、tty、uart、i2c）的大体流程后，才知道应该修改什么地方。因为是成熟的驱动，几乎没有遇到任何有挑战的bug。</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">在这一年的时间里，还有必须要学习的ubuntu开发环境搭建、命令行、shell ｓｃｒｉｐｔ、make、gdb、svn、git、emacs。</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); line-height: 22px; font-family: 'Times New Roman'; font-size: medium;"> 但我的局限是，对内核的互斥、同步、并发、阻塞、时间管理、内存分配等，只是知道有这样的概念，记得几个api。尝试过追踪内核代码，试图理解某项功能或者某个api的内核实现，但总会卡在某个内核的数据结构或者文件系统或者其它。好比进入一个庞大的迷宫。这还是单纯的字符设备，就没涉猎更复杂的块设备。</p> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium;">------</span><span style="color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;">&nbsp;</span><br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <br style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: 微软雅黑, Verdana, sans-serif, 宋体; font-size: 14px; line-height: 22px;" /> <p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); line-height: 22px; font-family: 'Times New Roman'; font-size: medium;"> 同样，没有继续深入研究学习linux驱动，因工作需要，几乎同时做android app开发。不会java、不懂android app，没用过eclipse/ADT，所有的问题全部靠搜索。好在网络上有几乎所有问题的解决方案和源码。就是这样，在半年的时间里，独立完成了2个用于驱动测试的app，参与另外一个app的开发。<br style="padding: 0px; margin: 0px;" /> <br style="padding: 0px; margin: 0px;" /> 但我的局限是，我不理解android，不理解java，不理解类，用c程序猿的思维，借着网络和eclipse的自动补全敲着代码。我想用整块的时间系统地学习，但发现时间总被用在解决新的问题，或者完成新的任务。<br style="padding: 0px; margin: 0px;" /> <br style="padding: 0px; margin: 0px;" /> ------<br style="padding: 0px; margin: 0px;" /> <br style="padding: 0px; margin: 0px;" /> 这是我四年的工作经历，我其实蛮喜欢这样宽范围的知识涉猎，这样可能不会局限于某一种选择。<br style="padding: 0px; margin: 0px;" /> 但问题是，我花了太多时间，每一个新知识点的学习都很辛苦，但结果都是蜻蜓点水，没有任何一项精通，几乎没有独立完成一项工作的信心。</p> <p style="padding: 0px; margin: 0px 0px 10px; color: rgb(0, 0, 0); line-height: 22px; font-family: 'Times New Roman'; font-size: medium;"> 所以我还是一个初级程序猿，拿着微薄的薪水。然后一面告诫自己潜心学习。另一面又很急躁地望着其它专注于某一方面的开发者几倍于我的薪水，很不安。而我已经毕业四年了。</p> 
+
+</div>
+
+<div class="tags">
+
+<span class="bti"></span></a>
+
+  </div>
+
+<div class="bar clearfix" id="qiushi_counts_13">
+
+<DIV class="podigg" id="newdigg13">
+
+<DIV class=up><A href="javascript:void()" onclick="postDigg('good',13);">(1) </A></DIV>
+
+<DIV class=down><A href="javascript:void()" onclick="postDigg('bad',13);">-(0) </A>
+
+</DIV>
+
+</DIV>
+
+<script language="javascript" type="text/javascript">getDigg(13);</script>
+
+<div class="comment">
+
+<a href="javascript:void()" onclick="CheckLogin(13);" title="评论" class="qiushi_comments">
+
+1
+
+</a>
+
+</div>
+
+<div class="detail">
+
+<a onClick="SharePanel(13);"></a>
+
+</div>
+
+</div>
+
+<div id="share_13" style="display:none;">
+
+<!-- Baidu Button BEGIN -->
+
+<div class="share clearfix">
+
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="{'url':/wenzi/2014/0921/13.html''}">
+
+		  <a class="bds_qzone">QQ空间</a>
+
+		  <a class="bds_tqq">腾讯微博</a>
+
+		  <a class="bds_tsina">新浪微博</a>
+
+		  <a class="bds_copya">复制网址</a>
+
+		  <a class="bds_tqf">腾讯朋友</a>
+
+		  <a class="bds_hi">百度空间</a>
+
+		  <a class="bds_kaixin001">开心网</a>
+
+		  <a class="bds_renren">人人网</a>
+
+		  <a class="bds_tsohu">搜狐微博</a>
+
+		  <a class="bds_douban">豆瓣网</a>
+
+		  <a class="bds_tieba">百度贴吧</a>
+
+		  <a class="bds_baidu">百度搜藏</a>
+
+</div>
+
+<script type="text/javascript" id="bdshare_js" data="type=tools&uid=681192" ></script>
+
+<script type="text/javascript" id="bdshell_js"></script>
+
+<script type="text/javascript">
+
+    var bds_config = {'bdText':'一个初级程序猿的吐槽：蜻蜓点水全不精通（做'};
+
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+
+</script>
+
+</div>
+
+<!-- Baidu Button END -->
+
+</div>
+
+<DIV class="comments login" id="qbpl13">
+
+<DIV id=r4983655>
+
+<div id='commetcontent13'></div>
+
+<div id='commetcontentNew13'></div>
+
+</DIV>
+
+<DIV class=input-block id="_ajax_feedback13">
+
+<DIV class="logout login-block"><A href="javascript:vote2(-1)">登录</A>后才能发表评论</DIV></DIV></DIV>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="context">
+
+<ul>
+
+<li class="pre_li">上一篇：<a href='/wenzi/2014/0921/12.html'>C++程序猿</a> </li>
+
+<li class="next_li">下一篇：没有了 </li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="col2">
+
+<div class="sponsor">
+
+<script src='/plus/ad_js.php?aid=21' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="microblog">
+
+<h3>收听</h3>
+
+<div class="content">
+
+<a href="http://user.qzone.qq.com/1492495058" target="_blank">QQ空间<span>610<em>万</em></span></a><a href="http://t.qq.com/qiushibaike" target="_blank">腾讯微博<span>145<em>万</em></span></a><a href="http://weibo.com/qiushibaike" target="_blank">新浪微博<span>55<em>万</em></span></a><a href="http://mail.qq.com/cgi-bin/bookcol?colid=314" target="_blank">Feed订阅<span>360<em>万</em></span></a>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sponsor">
+<script src='/plus/ad_js.php?aid=22' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="tagsblock">
+
+<h3>标签</h3>
+
+<div class="content">
+
+<a href="/tags.php">更多...</a>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sponsor">
+<script src='/plus/ad_js.php?aid=23' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sitelink">
+
+<h3>友情链接</h3>
+
+<div class="content">
+
+<a href='http://www.mianshi8.com' target='_blank'>面试吧</a> 
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div id="box">
+
+<div id="float" class="div1">
+
+<div id="float-ad" class="sponsor">
+<script src='/plus/ad_js.php?aid=24' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="toolbar">
+
+<a href="#top" class="back">回到顶部</a><a href="javascript:showSuggestForm()" class="feedback">意见建议</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="baidu-sponsor">
+<script src='/plus/ad_js.php?aid=25' language='javascript'></script>
+
+</div>
+
+</div>
+
+</div>
+
+﻿<div class="foot">
+<script src='/plus/ad_js.php?aid=26' language='javascript'></script>
+<div class="copyright">
+内容版权所有 ©2013-2014 http://127.0.0.1:8080  <a href="http://www.kuairuzhi.com/">京ICP备14017078号-1</a>
+<script src="http://s19.cnzz.com/stat.php?id=4311703&web_id=4311703" language="JavaScript"></script>
+</div>
+</div>
+
+<div id="login-form">
+
+<a href="#" class="close"><div class="bti"></div></a>
+
+<div class="ie6-fix"></div>
+
+<div class="col1">
+
+<h1>欢迎回来</h1>
+
+<div class="inputbox">
+
+<form name="userlogin" id="userlogin" action="/member/index_do.php" method="POST">
+
+<input type="hidden" name="fmdo" value="login" />
+
+<input type="hidden" name="dopost" value="login" />
+
+<input type="hidden" name="keeptime" value="604800" />
+
+<label for="login">用户名</label>
+
+<input type="text" tabindex="1" name="userid" id="login" class="Txt1" value="" onfocus="if(value=='') {value=''}" onblur="if(value=='') {value=''}"/>
+
+<label for="password">密码：(<a href="/member/resetpassword.php">忘记密码？</a>)</label>
+
+<input type="password" tabindex="2" name="pwd" id="password" class="Txt2" value="" onfocus="if(value=='') {value=''}" onblur="if(value=='') {value=''}"/>
+
+</div>
+
+<!--<div id="error"></div>-->
+
+<div class="optionbox"><label for='remember_me'><input type="checkbox" value="checked" checked name="remember_me" id="remember_me"> 记住我</label></div>
+
+<button type="submit">登录</button>
+
+</form>
+
+</div>
+
+<div class="col2">
+
+<h1>创建账号</h1>
+
+<div class="intro">
+
+强热推荐用QQ一键登录、一键注册、方便又省时。<br/><br/>
+
+<a href="javascript:vod(0);" onclick='toQzoneLogin()'><img src="/plus/qzonelogin/img/qq_login.png"></a></div>
+
+<a href="/member/index_do.php?fmdo=user&dopost=regnew" class="button">注册</a>
+
+</div>
+
+</div>
+
+<div id="suggest-form">
+
+<a href="#" class="close"><div class="bti"></div></a>
+
+<div class="ie6-fix"></div>
+
+<div class="form-block">
+
+<h1>请帮助我们进步</h1>
+
+<form method="post" action="/plus/guestbook.php" id="form1">
+
+<input type='hidden' name='action' value='save' /> 
+
+<textarea type="text" id="suggest-text" name="msg" tabindex="1"></textarea>
+
+<button type="submit" onclick="document.getElementById('form1').submit();" >提交</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+<script src="http://127.0.0.1:8080/templets/default/js/application.js?v=b3c1e" type="text/javascript"></script>
+
+<script>function CheckLogin2(){var taget_obj=document.getElementById('_userlogin');myajax=new DedeAjax(taget_obj,false,false,'','','');myajax.SendGet2("/member/ajax_loginsta.php");DedeXHTTP=null};function PostComment(mgid){var f=document.getElementById('feedback'+mgid);var msg=document.getElementById('commentc'+mgid).value;var nface='6';var nfeedbacktype='feedback';var nvalidate='';var nnotuser='';var nusername='';var npwd='';var taget_obj=$DE('commetcontentNew'+mgid);var waithtml="<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";if(msg==''||msg==null||msg.length==0||msg=='请不要发表与本内容无关的评论，您有了账号就是有身份的人了，我们可认识您。'){alert("评论内容不能为空！");return};if(msg.length>500){alert("你的评论是不是太长了？请填写500字以内的评论。");return};if(f.feedbacktype){for(var i=0;i<f.feedbacktype.length;i++)if(f.feedbacktype[i].checked){nfeedbacktype=f.feedbacktype[i].value}};if(f.notuser.checked)nnotuser='1';if(f.username)nusername=f.username.value;if(f.pwd)npwd=f.pwd.value;var myajax=new DedeAjax(taget_obj,false,true,'','',waithtml);myajax.sendlang='utf-8';myajax.AddKeyN('dopost','send');myajax.AddKeyN('aid',mgid);myajax.AddKeyN('fid',f.fid.value);myajax.AddKeyN('face',nface);myajax.AddKeyN('feedbacktype',nfeedbacktype);myajax.AddKeyN('validate',nvalidate);myajax.AddKeyN('notuser',nnotuser);myajax.AddKeyN('username',nusername);myajax.AddKeyN('pwd',npwd);myajax.AddKeyN('msg',msg);myajax.SendPost2('/plus/feedback_ajax.php');document.getElementById('commentc'+mgid).value='';f.fid.value=0;if(f.validate){if($DE('validateimg'))$DE('validateimg').src="/include/vdimgck.php?"+f.validate.value;f.validate.value=''}}</script><script>CheckLogin2();</script><script>function LoadCommets(page){var taget_obj=document.getElementById('commetcontent'+page);var waithtml="<div style='line-height:50px'><img src='/images/loadinglit.gif' />评论加载中...</div>";var myajax=new DedeAjax(taget_obj,true,true,'','x',waithtml);myajax.SendGet2("/plus/feedback_ajax.php?dopost=getlist&aid="+page+"&page="+page);DedeXHTTP=null}</script>

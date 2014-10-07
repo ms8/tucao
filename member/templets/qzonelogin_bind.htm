@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script language="javascript"> 
+<!--屏蔽JS错误  
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//--> 
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QQ帐号绑定 - 会员中心 - <?php echo $cfg_webname; ?></title>
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="templets/style/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templets/js/j.js"></script>
+<script type="text/javascript" src="templets/js/load.js"></script>
+<script type="text/javascript" src="templets/js/leftmenu.js"></script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(tid){
+LoadCommets(tid);
+if(document.getElementById('qbpl'+tid).className=='comments'){
+	  document.getElementById('qbpl'+tid).className='login';
+}else{
+	  document.getElementById('qbpl'+tid).className='comments';
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php?aid="+tid);
+	  DedeXHTTP = null;
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+}
+
+}
+
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript">  var childWindow;  function toQzoneLogin()  {  childWindow =window.open("/plus/qzonelogin/redirect.php?gourl="+document.URL,"TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");  }  function closeChildWindow()  {  childWindow.close();  }  </script>
+<script src="/plus/autohtml.php?mod=index" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+    <?php include(DEDEMEMBER."/templets/head.htm"); ?>
+  <div id="content" class="w960 clearfix">
+    <?php 
+   		include(DEDEMEMBER."/templets/menu.php"); 
+        $channels = array();
+        foreach($channelInfos as $mrow)
+        {
+          if($mrow['id'] < 0) continue;
+          if($mrow['isshow'] == 0 || $mrow['issend'] == 0) continue;
+          if($cfg_mb_album=='N' && $mrow['nid']=='image') continue;
+          if(trim($mrow['usertype']) != '' && $mrow['usertype'] != $cfg_ml->fields['mtype']) continue;
+          $channels[$mrow['id']] = $mrow;
+        }
+      ?>
+    <div id="mcpmain">
+      <div id="appTab">
+        <ul>
+          <li class="thisTab"><a href="qzonelogin_bind.php">QQ帐号绑定</a></li>
+        </ul>
+      </div>
+      <div id="mainCp" class="postForm">
+      <h3 class="meTitle"><strong></strong></h3>
+        <div class="appMsg">
+			<?php echo $mybind;?>
+        </div>
+      <!--主操作区域 -->
+    </div>
+  </div>
+</div>
+<?php include(DEDEMEMBER."/templets/foot.htm"); ?>
+</div>
+</body>
+</html>

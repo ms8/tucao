@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script language="javascript"> 
+<!--屏蔽JS错误  
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//--> 
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>会员中心 -<?php echo $cfg_webname; ?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="templets/style/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templets/js/j.js"></script>
+<script type="text/javascript" src="templets/js/jquery.boxy.js"></script>
+<script type="text/javascript" src="templets/js/load_index.js"></script>
+<script type="text/javascript" src="templets/js/leftmenu.js"></script>
+<script type="text/javascript" src="templets/js/face.js"></script>
+<script type="text/javascript" src="templets/js/Dialog.js"></script>
+<script type="text/javascript" src="templets/js/jquery.js"></script>
+<script type="text/javascript" src="templets/js/feed.js"></script>
+<script language='javascript'>
+	function msgSubmit(form) {
+		//var id=form.id.value;
+		var content = form.share_textarea.value;
+		if( content == '来,说点啥吧...' ) content = '';
+		if ( content == '' ) {
+			alert('请输入内容'); return false;
+		}
+		$.ajax({
+			type:'POST',
+			url:'index_do.php?fmdo=moodmsg&dopost=sendmsg',
+			cache:false,
+			data:'&content='+encodeURIComponent(content),
+			dataType:'json',
+			success:function(message){
+				if ( message.type == 'success' ) {
+					$('#share_textarea').val('');
+					$('#moodcontent').html(message.data);
+				} else {
+					alert(message.data);
+				}
+			}
+		});
+	}
+</script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(tid){
+LoadCommets(tid);
+if(document.getElementById('qbpl'+tid).className=='comments'){
+	  document.getElementById('qbpl'+tid).className='login';
+}else{
+	  document.getElementById('qbpl'+tid).className='comments';
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php?aid="+tid);
+	  DedeXHTTP = null;
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+}
+
+}
+
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript">  var childWindow;  function toQzoneLogin()  {  childWindow =window.open("/plus/qzonelogin/redirect.php?gourl="+document.URL,"TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");  }  function closeChildWindow()  {  childWindow.close();  }  </script>
+<script src="/plus/autohtml.php?mod=index" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<div id="baseParent">
+    <div id="mood_face_bg"></div>
+	<div id="mood_msg_menu" class="faceBox" style="position: absolute; top: 232px;display: none;">
+        <ul>
+        <?php
+        for($i=1;$i<=64;$i++)
+        {
+         ?>        
+            <li><img style="cursor: pointer; position: relative;" src="templets/images/smiley/<?php echo $i ?>.gif" id="face1" onclick="addFace(<?php echo $i ?>)"/></li>
+         <?php
+         }
+         ?>
+        </ul>
+	</div>
+
+</div>
+<div id="main">
+<?php include(DEDEMEMBER."/templets/head.htm"); ?>
+<div id="content" class="w960 clearfix">
+  <?php include(DEDEMEMBER."/templets/menu.php"); ?>
+  <div class="mainBox">
+  <div class="mainBor">
+    <div class="main-wrap">
+      <div class="sns-avatar">
+        <div class="headPic">
+          <div class="imgLink"> <a href="edit_face.php" title="修改头像"><img src="<?php echo $cfg_ml->fields['face']; ?>" width="100" height="100" alt="修改头像"/></a> </div>
+          <span class="blank5px"></span>
+          <p class="lh22 tc">
+            <a class="blue uline" href="edit_baseinfo.php">编辑资料</a>
+            <a class="blue uline" href="edit_face.php">修改头像</a><br>
+        </p>
+        </div>
+        <div class="av-index">
+        <div class="mood_user hUserName">
+            <em class="yh"><?php echo $cfg_ml->M_LoginID; ?></em>
+            <i class="focus">好友<b><?php echo $minfos['friend']; ?></b>人</i>
+            <i class="fans">文章被访问<b><?php echo $minfos['pagecount']; ?></b>次</i>
+        </div>
+    <div class="moodCon">
+            <?php
+             if(is_array($moodmsg)){
+            ?>
+            <li class="other" id="moodcontent"><?php echo $moodmsg['msg'];?></li>
+            <?php
+              } else {
+            ?>
+             <li class="other" id="moodcontent">还没有个性签名，试试在下面输入框中填写</li>
+             <?php
+             }
+             ?>
+            <li class="sign"><?php echo $cfg_ml->GetSta($dsql); ?></li>
+          </div> 
+      <div class="share">
+          <form target="hidden_frame" method="post" enctype="multipart/form-data" name="msgmood" action="#">
+            <input id="share_textarea" type="text" value="来,说点啥吧..." onclick="showFace()"/>
+            <button id="btn_submit" type="button" onclick="msgSubmit(this.form)">发表</button>
+          </form>
+      </div>
+        </div>
+      </div>
+      <div class="blank5px"></div>
+      <div id="sns-feeds">
+          <div class="indexTab">
+            <ul>
+              <li id="arcticle"><a href="javascript:void(0)">最新文档</a></li>
+              <li class="thisTab" id="myfeed"><a href="javascript:void(0)">我的动态</a></li>
+              <li id="allfeed"><a href="javascript:void(0)">全站动态</a></li>
+            </ul>
+          </div>
+        <div class="sns-box" id="FeedText"></div>
+      </div>
+    </div>
+    <div class="col-extra">
+      <div class="sns-box">
+        <div class="hd">
+          <h3>信息统计</h3>
+        </div>
+        <div class="sns-info">
+                <ul>
+                <li>短消息:<a href="pm.php?TB_iframe=true&height=600&width=700" title="我的短信息" target="_blank"> <?php echo $pms['nums'];?></a> </li>
+        <li>文章:<a href="content_list.php?channelid=1" title="已发布的文章"> <?php echo $minfos['article']; ?></a></li>
+        </ul>
+        </div>
+      </div>
+      <div class="sns-box">
+        <div class="hd">
+          <h3>欢迎新朋友</h3>
+        </div>
+        <div class="sns-avatar-m">
+          <ul>
+            <?php
+				foreach ($newfriends as $newfriend)
+				{
+			 ?>
+            <li class="pic"><a target="_blank" href="<?php echo $cfg_cmsurl;?>/member/index.php?uid=<?php echo $newfriend['userid'];?>">
+            <?php
+            if(!$newfriend['face']==""){
+             echo "<img src=".$newfriend['face']." width='48' height='48' />";
+            }else{
+             if($newfriend['sex']=='女') echo "<img src='templets/images/dfgirl.png' width='48' height='48' />";
+             else echo "<img src='templets/images/dfboy.png' width='48' height='48' />";
+            }
+            ?>
+            </a><span class="name"><a target="_blank" href="<?php echo $cfg_cmsurl;?>/member/index.php?uid=<?php echo $newfriend['userid'];?>"><?php echo $newfriend['uname'];?></a></span></li>
+             <?php
+                }
+              ?>
+          </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+      <div class="sns-box">
+        <div class="hd">
+          <h3>我的好友</h3>
+        </div>
+        <div class="sns-avatar-m">
+          <ul>
+             <?php
+				foreach ($friends as $friend)
+				{
+			 ?>
+            <li class="pic"><a target="_blank" href="<?php echo $cfg_cmsurl;?>/member/index.php?uid=<?php echo $friend['floginid'];?>">
+            <?php
+            if(!$friend['face']==""){
+             echo "<img src=".$friend['face']." width='48' height='48' />";
+            }else{
+             if($friend['sex']=='女') echo "<img src='templets/images/dfgirl.png' width='48' height='48' />";
+             else echo "<img src='templets/images/dfboy.png' width='48' height='48' />";
+            }
+            ?>
+            </a><span class="name"><a target="_blank" href="<?php echo $cfg_cmsurl;?>/member/index.php?uid=<?php echo $friend['floginid'];?>"><?php echo $friend['funame'];?></a></span></li>
+             <?php
+                }
+              ?>
+          </ul>
+        </div>
+      </div>
+      <div class="sns-box">
+       <div class="hd">
+          <h3>搜索用户</h3>
+        </div>
+                  <span class="blank5px"></span>
+          <form action="search.php">
+            <input class="text1" type="text" value="" name="keyword"/>
+            <button class="button1" type="submit">找人</button>
+          </form> 
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<?php include(DEDEMEMBER."/templets/foot.htm"); ?>
+</div>
+</body>
+</html>

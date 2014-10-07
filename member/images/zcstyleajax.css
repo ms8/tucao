@@ -1,0 +1,54 @@
+*{ font: normal 12px/160% Verdana, Lucida, Arial, Helvetica, ??,sans-serif;color:#666;}
+ul,ol{list-style:none;}
+h1, h2, h3, h4, h5, h6, form, div, p, i, img, ul, li, ol, table, tr, td, fieldset, label, legend,dt,dd,dl,body{ margin:0;padding:0;}
+img {border:0;}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+button {cursor:pointer;}
+div,p {display:block;}
+fieldset,form{ background:none; border:none; padding:0; margin:0;}
+
+body{ text-align:center;}
+
+.bline{ clear:both;margin:10px auto; border-bottom:1px dashed #efefef; height:1px; clear:both; overflow:hidden;}
+
+
+#hd { height:50px; padding:10px; position:relative; border-bottom:1px solid #EFEFEF; }
+#ft{ clear:both; text-align:center; line-height:22px; color:#C9C9C9; padding:12px; margin-bottom:20px; border-top:1px solid #EFEFEF; }
+
+
+
+.w_comm{ clear:both; text-align:left;}
+
+.input{ background:url(input_bg.gif) no-repeat;  line-height:20px; padding-top:4px; height:16px; *padding-top:0;*height:20px; border:1px solid #ccc; padding-left:4px;width:140px;}
+.a1{ color:#1A72C2; text-decoration:underline;}
+.a2{ color:#FF0000; font-weight:bold; font-size:14px;}
+
+.img{ position:absolute; margin-left:1px;}
+
+
+.reg{ clear:both; width:355px; margin-top:12px;}
+.reg p{ clear:both;text-align:left;padding:5px 0;*padding:7px 0; }
+.reg p;after{content:"";display:block; height:0; clear:both; visbility:hidden;}
+.reg label{ width:140px;color:#000; width:94px; text-align:right; float:left; padding-top:3px; margin-right:10px;}
+.reg select{  margin-right:10px;}
+.reg em{ color:#FF0000; display:block; clear:both; line-height:30px; }
+.action{ clear:both; padding:10px 0 10px 122px;}
+.confirm_btn{ background:url(sub_btn.gif) no-repeat; width:129px; height:30px; color:#333; border:none;}
+
+
+
+
+.w_240{ width:140px;float:left;}
+
+
+
+.sfr{ margin-left:20px; color:#999; width:178px;float:left; text-align:lef}
+.sfl{ width:244px; text-align:left;float:left;}
+.sfl img{ margin:-20px 0 0 53px; *margin:-21px 0 0 58px; float:left;}
+.pw_power{ border:1px solid #ccc; height:15px;background:url(pw_powerajax.jpg) no-repeat; display:block;}
+.pw_ebb{ width:54px; }
+.pw_mid{ width:108px;}
+.pw_strong{ width:162px;}
+
+

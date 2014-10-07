@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script language="javascript"> 
+<!--屏蔽JS错误  
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//--> 
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<title>更改头像 - 会员中心 - <?php echo $cfg_webname; ?></title>
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="templets/style/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templets/js/j.js"></script>
+<script type="text/javascript" language='javascript'src='templets/js/main.js'></script>
+<script type="text/javascript" src="templets/js/load.js"></script>
+<script type="text/javascript" src="templets/js/leftmenu.js"></script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(tid){
+LoadCommets(tid);
+if(document.getElementById('qbpl'+tid).className=='comments'){
+	  document.getElementById('qbpl'+tid).className='login';
+}else{
+	  document.getElementById('qbpl'+tid).className='comments';
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php?aid="+tid);
+	  DedeXHTTP = null;
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+}
+
+}
+
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript">  var childWindow;  function toQzoneLogin()  {  childWindow =window.open("/plus/qzonelogin/redirect.php?gourl="+document.URL,"TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");  }  function closeChildWindow()  {  childWindow.close();  }  </script>
+<script src="/plus/autohtml.php?mod=index" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+   <?php include(DEDEMEMBER."/templets/head.htm"); ?>
+  <div id="content" class="w960 clearfix">
+    <?php include(DEDEMEMBER."/templets/menu.php"); ?>
+    <div class="mainBox">
+<div id="mcpmain">
+      <div id="appTab">
+        <ul>
+          <li><a href="edit_baseinfo.php">基本资料</a></li>
+          <li class="thisTab"><a href="edit_fullinfo.php">详细资料</a></li>
+          <li><a href="edit_face.php">头像设置</a></li>
+        </ul>
+      </div>
+<form action="edit_face.php" method="post" enctype="multipart/form-data" name="form1">
+    <input type="hidden" name="dopost" value="save" />
+      <div id="mainCp">
+        <h3 class="meTitle"></h3>
+        <div class="postForm">
+          <p class="cellBg">
+            <label style="width:90px">手工填写网址：</label>
+            <input name='oldface' type='hidden' id='oldface' value='<?php echo $face; ?>' />
+            <input name='faceurl' type='text' id='faceurl' size='35' class='intxt' style='width:250px' value='<?php echo $face; ?>' />
+          <p>
+            <label style="width:100px">选择上传的文件：</label>
+            <input name="face" type="file" id="face" size="45" /> 大小180x180像
+          </p>
+          <p class="cellBg">
+            <label style="width:90px"><b>原来的头像：</b><br />
+                	<a href="edit_face.php?dopost=delold&oldface=<?php echo urlencode($face); ?>">[删除旧头像]</a></label>
+            <div id='faceview' class='overflow mTB10 litPic' style="width:180px;height:180px;text-align:center;vertical-align:middle;line-height:180px;display:table-cell;">
+                 <?php
+       					if($face!='') echo " <img class='' src='$face' style='_margin-top:expression(( 180 - this.height ) / 2);' />\r\n";
+       			?>
+              </div>
+          </p>
+          <p>
+            <button class="button2" type="submit">更新</button>
+            <button class="button2 ml10" type="reset">重设</button>
+          </p>
+    </div>
+ </div>
+</form>
+      <!--主操作区域 -->
+    </div>
+  </div></div>
+<?php include(DEDEMEMBER."/templets/foot.htm"); ?>
+</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<?php
+if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
+$fields = array();
+?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script language="javascript"> 
+<!--屏蔽JS错误  
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//--> 
+</script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<title>查找好友 - 会员中心 - <?php echo $cfg_webname; ?></title>
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="templets/style/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templets/js/j.js"></script>
+<script type="text/javascript" language="javascript" src="../images/enums.js"></script>
+<script type="text/javascript" language="javascript">
+<?php echo GetEnumsJs('nativeplace'); ?>
+</script>
+<script type="text/javascript" src="templets/js/load.js"></script>
+<script type="text/javascript" src="templets/js/leftmenu.js"></script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(tid){
+LoadCommets(tid);
+if(document.getElementById('qbpl'+tid).className=='comments'){
+	  document.getElementById('qbpl'+tid).className='login';
+}else{
+	  document.getElementById('qbpl'+tid).className='comments';
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php?aid="+tid);
+	  DedeXHTTP = null;
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+}
+
+}
+
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript">  var childWindow;  function toQzoneLogin()  {  childWindow =window.open("/plus/qzonelogin/redirect.php?gourl="+document.URL,"TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");  }  function closeChildWindow()  {  childWindow.close();  }  </script>
+<script src="/plus/autohtml.php?mod=index" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+  <?php include(DEDEMEMBER."/templets/head.htm"); ?>
+  <div id="content" class="w960 clearfix">
+    <?php include(DEDEMEMBER."/templets/menu.php"); ?>
+    <div class="mainBox">
+<div id="mcpmain">
+      <div id="appTab">
+        <ul>
+          <li><a href="myfriend.php?ftype=0"><span>所有好友</span></a></li>
+          <li class="thisTab"><a href="search.php"><span>查找好友</span></a></li>
+          <li><a href="visit-history.php?dopost=viewme"><span>关注我的人</span></a></li>
+          <li><a href="visit-history.php?dopost=meview"><span>我最近访问</span></a></li>
+     
+        </ul>
+      </div>
+      <div id="mainCp">
+         <div class="postForm">
+          <form action="search.php">
+              <input class="intxt" type='text' name='keyword' value='' style="width:170px" />
+              <select name="province" id="province" onchange="javascript:selNext(document.getElementById('city'),this.value)">
+              <option value='0'>一级地区</option>
+             <?php
+              global $em_nativeplaces;
+              foreach($em_nativeplaces as $k=>$v)
+							{
+								if($k%500 == 0)
+								{
+									if($k==$province) echo "<option value='$k' selected='selected'>$v</option>\r\n";
+									else echo "<option value='$k'>$v</option>\r\n";
+								}
+							}
+            ?>
+              </select>
+              <select id="city" name="city">
+                <option value='0'>具体地区</option>
+                <?php
+                if(!empty($province))
+                {
+                	foreach($em_nativeplaces as $k=>$v)
+									{
+										if($k > $province && $k < $province+500)
+										{
+											if($k==$city) echo "<option value='$k' selected='selected'>$v</option>\r\n";
+											else echo "<option value='$k'>$v</option>\r\n";
+										}
+									}
+                }
+                ?>
+              </select>
+              
+              <input class="intxt" name="minage" type="text" id="minage" value="18" style="width:20px" />
+              -
+              <input class="intxt" name="maxage" type="text" id="maxage" value="35" style="width:20px" />
+              岁
+              <input type="radio" name="sex" id="radio1" value="男" />
+              男
+              <input name="sex" type="radio" id="radio2" value="女" />
+              女
+              <input name="sex" type="radio" id="radio3" value="" checked="checked" />
+              不限
+              <button class="button2 mL10" type="submit">搜索</button>
+            </form>
+            </div>
+          <h3 class="meTitle"> </h3>
+        <ul class="listStyle3">
+        <?php
+$atts = array();
+$atts['tagname'] = 'datalist';
+$blockValue = $this->refObj->GetArcList($atts,$this->refObj,$fields); 
+if(is_array($blockValue)){
+foreach( $blockValue as $key=>$fields )
+{
+
+   			if(empty($fields['face'])) $face=($fields['sex']=='女')? 'templets/images/dfgirl.png' : 'templets/images/dfboy.png';
+            else $face=$fields['face'];
+    		$spaceurl = $cfg_basehost.'/member/index.php?uid='.$fields['userid'];
+    	?>
+<li class="clearfix">
+  <div class="frdInfo">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="3" align="left" valign="middle" class="userTitle"><a href='index.php?uid=<?php echo $fields['userid']; ?>' target='_blank'><?php echo $fields['uname']; ?></a> (
+                <?php
+        			 if(trim($fields['lovemsg'])=='') echo '此人什么都不想说...';
+       				 else{
+        				$fields['lovemsg'] = trim($fields['lovemsg']);
+        				echo $fields['lovemsg'];
+         		}
+       			?>
+                )
+         </td>
+      </tr>
+      <tr>
+        <td width="40%">资料：<?php echo $fields['sex'];  
+         	if(!($fields['age'])==""){
+          		echo ",".($fields['age'])."岁";
+          	}
+         ?>
+          </td>
+        <td>E-Mail: <?php echo $fields['email']; ?></td>
+        <td align="right" class="doPost"><a href='index.php?uid=<?php echo $fields['userid']; ?>&action=infos' target='_blank'>[资料]</a></td>
+        </tr>
+      <tr>
+        <td>出生日期: <?php echo $fields['birthday']; ?></td>
+        <td class="doPost"><a href='index.php?action=newfriend&uid=<?php echo $fields['userid']; ?>' target='_blank'>加为好友</a></td>
+        <td align="right" class="doPost"><a href='index.php?uid=<?php echo $fields['userid']; ?>&action=guestbook' target='_blank'>[留言]</a></td>
+        </tr>
+      </table>
+    </div>
+      <a href='<?php echo $spaceurl; ?>' target='_blank'><img src='<?php echo $face ?>' width='60' height='60'/></a> </li>
+         <?php
+}
+}?>
+        </ul>
+        <div style="clear:both"></div>
+        <div class="listDo appMsg">
+          <div class="control fLeft">
+          </div>
+          <div class="pageList fRight"><?php
+$atts = array();
+$atts['tagname'] = 'pagelist';
+$atts['listsize'] = '5';
+ echo $this->refObj->GetPageList($atts,$this->refObj,$fields); 
+?>
+</div>
+        </div>
+      </div>
+      <!--主操作区域 -->
+    </div>
+  </div></div>
+<?php include(DEDEMEMBER."/templets/foot.htm"); ?>
+</div>
+</body>
+</html>

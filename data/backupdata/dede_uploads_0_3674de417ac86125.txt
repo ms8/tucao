@@ -1,0 +1,6 @@
+INSERT INTO `dede_uploads` VALUES('1','3','有意思。。。','/uploads/allimg/120714/1-120G40A941W1.jpg','1','596','1375','0','149096','1342220381','1');
+INSERT INTO `dede_uploads` VALUES('2','4','啊啊啊','/uploads/allimg/120714/1-120G40F554Q7.jpg','1','450','325','0','44881','1342220754','1');
+INSERT INTO `dede_uploads` VALUES('3','5','踢踢腿','/uploads/allimg/120714/1-120G40F62GR.jpg','1','499','546','0','114557','1342220787','1');
+INSERT INTO `dede_uploads` VALUES('4','5','踢踢腿','/uploads/allimg/121114/1-121114101605S1.jpg','1','471','543','0','43716','1352859365','1');
+INSERT INTO `dede_uploads` VALUES('5','4','啊啊啊','/uploads/allimg/121114/1-121114101K63J.jpg','1','600','796','0','247037','1352859476','1');
+INSERT INTO `dede_uploads` VALUES('6','3','有意思。。。','/uploads/allimg/121114/1-121114101T3G0.jpg','1','402','542','0','21478','1352859523','1');

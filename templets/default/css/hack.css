@@ -1,0 +1,69 @@
+#wrap {
+	position:relative;
+	zoom:1;
+	margin:0px auto;
+	visibility:hidden;
+	margin-top:20px;
+}
+#wrap div {
+	position:absolute;
+	left:0;
+	top:0;
+	opacity:1;
+	visibility:hidden;
+}
+.active div.mode {
+-webkit-transition:all .8s ease-in;
+-moz-transition:all .8s ease-in-out;
+-o-transition:all .5s ease-in;
+transition:all .5s ease-in;
+}
+.mode {
+	background:#FFF;
+	border-top:1px solid #F60;
+-webkit-transition: opacity .4s ease-in-out;
+-moz-transition: opacity .4s ease-in-out;
+-o-transition: opacity .4s ease-in-out
+}
+
+.active .mode {
+-webkit-transition: all .7s ease-out .1s;
+-moz-transition:all .7s ease-out;
+-o-transition:all .7s ease-out .1s;
+transition:all .7s ease-out .1s
+}
+.mode {
+	width:190px;
+	padding:14px 14px 6px;
+	border:1px solid #CCC;
+	background:#EEE
+}
+
+.mode:hover{background:#F96}
+
+.mode .pic {
+	
+	width:190px;
+	margin-bottom:7px;
+	position:relative;
+	text-align:center
+}
+.mode .pic a {
+	display:block
+}
+.mode .pic a img {
+	width:190px;
+	vertical-align: bottom;
+}
+.page {
+	clear:both;
+	padding: 50px 0 50px 290px;
+}
+.page li {
+	float: left;
+	margin-right: 12px;
+}
+.page .thisclass, .page strong {
+	color: #FF6600;
+	font-weight: bold;
+}

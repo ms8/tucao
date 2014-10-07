@@ -1,0 +1,5 @@
+INSERT INTO `dede_addonarticle` VALUES('1','1','测试测试。。。。测试测试。。。。','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('2','1','需要购买的联系QQ45485397','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('3','2','<div style=\"text-align: center\">\r\n	<img alt=\"\" src=\"/uploads/allimg/121114/1-121114101T3G0.jpg\" style=\"width: 402px; height: 542px\" /><br />\r\n	糗事百科信息测试</div>\r\n','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('4','4','<img alt=\"\" src=\"/uploads/allimg/121114/1-121114101K63J.jpg\" style=\"width: 600px; height: 796px\" /><br />\r\n<br />\r\n糗事百科信息测试','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('5','4','<img alt=\"\" src=\"/uploads/allimg/121114/1-121114101605S1.jpg\" style=\"width: 471px; height: 543px\" /><br />\r\n<br />\r\n糗事百科信息测试','','','127.0.0.1');

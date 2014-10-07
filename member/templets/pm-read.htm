@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<title>消息管理 - 会员中心 - <?php echo $cfg_webname; ?></title>
+<link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="templets/style/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templets/js/j.js"></script>
+<script type="text/javascript" src="templets/js/load.js"></script>
+<script type="text/javascript" src="templets/js/leftmenu.js"></script>
+<script type="text/javascript">
+	function folderSelAll()
+	{
+		for(i=0;i<document.form1.deleteid.length;i++)
+		{
+			if(!document.form1.deleteid[i].checked)
+			{
+				document.form1.deleteid[i].checked=true;
+			}
+		}
+	}
+	
+	//获得选中文件的文件名
+	function GetCheckfolderItem()
+	{
+		var allSel='';
+		if(document.form1.deleteid.value) return document.form1.deleteid.value;
+		for(i=0;i<document.form1.deleteid.length;i++)
+		{
+			if(document.form1.deleteid[i].checked)
+			{
+				if(allSel=='')
+				allSel=document.form1.deleteid[i].value;
+				else
+				allSel=allSel+","+document.form1.deleteid[i].value;
+			}
+		}
+		return allSel;
+	}
+	
+	function DoSubmit(myfolder)
+	{
+		var selid = GetCheckfolderItem();
+		if(selid=='') {
+			alert("你没选中任何信息！");
+			return false;
+		}
+		if(window.confirm("你确定要删除这些消息么？"))
+		{
+			location = "pm.php?dopost=del&ids="+selid+"&folder="+myfolder;
+		}
+	}
+</script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(tid){
+LoadCommets(tid);
+if(document.getElementById('qbpl'+tid).className=='comments'){
+	  document.getElementById('qbpl'+tid).className='login';
+}else{
+	  document.getElementById('qbpl'+tid).className='comments';
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php?aid="+tid);
+	  DedeXHTTP = null;
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+}
+
+}
+
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg'+aid);
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript">  var childWindow;  function toQzoneLogin()  {  childWindow =window.open("/plus/qzonelogin/redirect.php?gourl="+document.URL,"TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");  }  function closeChildWindow()  {  childWindow.close();  }  </script>
+<script src="/plus/autohtml.php?mod=index" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+<div id="main">
+  <?php include(DEDEMEMBER."/templets/head.htm"); ?>
+  <div id="content" class="w960 clearfix">
+    <?php include(DEDEMEMBER."/templets/menu.php"); ?>
+    <div class="mainBox">
+<div id="mcpmain">
+      <div id="appTab">
+        <ul>
+            <li><a href="pm.php?dopost=send">写新消息</a></li>
+            <li class="thisTab"><a href="pm.php?folder=inbox">收件箱</a></li>
+            <li><a href="pm.php?folder=outbox">发件箱</a></li>
+            <li><a href="pm.php?folder=track">已发出信息</a></li>
+        </ul>
+        <div class="tabOther">
+          
+        </div>
+      </div>
+      <ul class="tabSub">
+        <li <?php if(empty($state)) echo 'class="thisTab"'; ?>><a href="pm.php?folder=inbox"><span>全部</span></a></li>
+        <li <?php if($state == "1") echo 'class="thisTab"'; ?>><a href="pm.php?folder=inbox&state=1"><span>已阅读</span></a></li>
+        <li <?php if($state == "-1") echo 'class="thisTab"'; ?>><a href="pm.php?folder=inbox&state=-1"><span>未阅读</span></a></li>
+      </ul>
+      <div id="mainCp">
+        <!--内容消息提示 -->
+        <h3 class="meTitle">短消息内容</h3>
+        <div class="contentShow">
+          <p>
+            <label>标题：</label>
+            <?php echo $row['subject']; ?> [<a href="pm.php?dopost=send">回复</a>]</p>
+          <p>
+            <label>内容：</label>
+            <?php echo text2html($row['message']); ?></p>
+        </div>
+      </div>
+      <!--主操作区域 -->
+    </div>
+  </div></div>
+ <?php include(DEDEMEMBER."/templets/foot.htm"); ?>
+</div>
+</body>
+</html>

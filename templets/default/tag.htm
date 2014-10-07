@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script language="javascript"> 
+
+<!--屏蔽JS错误  
+
+function killerrors() { 
+
+return true; 
+
+} 
+
+window.onerror = killerrors; 
+
+//--> 
+
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<meta name="keywords" content=""/>
+
+<meta name="description" content=""/>
+
+<title>标签-{dede:global.cfg_webname/}</title>
+
+<link href='{dede:global.cfg_templets_skin/}/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
+
+<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+<!--
+
+function CheckLogin(tid){
+
+LoadCommets(tid);
+
+if(document.getElementById('qbpl'+tid).className=='comments'){
+
+	  document.getElementById('qbpl'+tid).className='login';
+
+}else{
+
+	  document.getElementById('qbpl'+tid).className='comments';
+
+	  var taget_obj = document.getElementById('_ajax_feedback'+tid);
+
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	  myajax.SendGet2("{dede:global.cfg_cmsurl/}/member/ajax_feedback.php?aid="+tid);
+
+	  DedeXHTTP = null;
+
+	  document.getElementById('commetcontentNew'+tid).innerHTML='';
+
+}
+
+
+
+}
+
+
+
+function postBadGood(ftype,fid)
+
+{
+
+	var taget_obj = document.getElementById(ftype+fid);
+
+	var saveid = GetCookie('badgoodid');
+
+	if(saveid != null)
+
+	{
+
+		var saveids = saveid.split(',');
+
+		var hasid = false;
+
+		saveid = '';
+
+		j = 1;
+
+		for(i=saveids.length-1;i>=0;i--)
+
+		{
+
+			if(saveids[i]==fid && hasid) continue;
+
+			else {
+
+				if(saveids[i]==fid && !hasid) hasid = true;
+
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+
+				j++;
+
+				if(j==10 && hasid) break;
+
+				if(j==9 && !hasid) break;
+
+			}
+
+		}
+
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+
+		else saveid += ','+fid;
+
+		SetCookie('badgoodid',saveid,1);
+
+	}
+
+	else
+
+	{
+
+		SetCookie('badgoodid',fid,1);
+
+	}
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	myajax.SendGet2("{dede:field name='phpurl'/}/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+
+}
+
+function postDigg(ftype,aid)
+
+{
+
+	var taget_obj = document.getElementById('newdigg'+aid);
+
+	var saveid = GetCookie('diggid');
+
+	if(saveid != null)
+
+	{
+
+		var saveids = saveid.split(',');
+
+		var hasid = false;
+
+		saveid = '';
+
+		j = 1;
+
+		for(i=saveids.length-1;i>=0;i--)
+
+		{
+
+			if(saveids[i]==aid && hasid) continue;
+
+			else {
+
+				if(saveids[i]==aid && !hasid) hasid = true;
+
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+
+				j++;
+
+				if(j==20 && hasid) break;
+
+				if(j==19 && !hasid) break;
+
+			}
+
+		}
+
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+
+		else saveid += ','+aid;
+
+		SetCookie('diggid',saveid,1);
+
+	}
+
+	else
+
+	{
+
+		SetCookie('diggid',aid,1);
+
+	}
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	var url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action="+ftype+"&id="+aid;
+
+	myajax.SendGet2(url);
+
+}
+
+function getDigg(aid)
+
+{
+
+	var taget_obj = document.getElementById('newdigg'+aid);
+
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+
+	myajax.SendGet2("{dede:global.cfg_phpurl/}/digg_ajax.php?id="+aid);
+
+	DedeXHTTP = null;
+
+}
+
+-->
+
+</script>
+
+</head>
+
+<body>
+
+<a name="top"></a>
+
+<div class="head">
+
+<div class="content-block">
+
+<div class="logo"><a href="/">{dede:global.cfg_webname/}</a></div>
+
+<div class="userbar">
+
+<div class="login hidden">
+
+</div>
+
+<div class="logout" id="_userlogin">
+
+<a href="javascript:vote2(-1)">登录</a>
+
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a>
+
+</div> 
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="menu-bar clearfix">
+
+<div class="content-block">
+
+<div class="menu">
+
+<ul>
+
+<li class="menuout"><a id='highlight' href="/tags.php">标签</a></li>
+
+<li class="menuout" onMouseOver="this.className='menuover'" onMouseOut="this.className='menuout'">
+
+<a href="/click_week" class="submenutitle">人气</a>
+
+<a href="/click_week" class="submenu">7天内</a>
+
+<a href="/click_month" class="submenu">30天内</a>
+
+</li>
+
+{dede:channel row='10'  type=top}<li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>{/dede:channel}
+
+</ul>
+
+</div>
+
+<div class="search">
+
+<form id="formsearch" name="formsearch" action="/plus/search.php">
+<input type="hidden" value="0" name="kwtype">
+<input name="q" type="text" class="input-box" id="search-keyword" value="输入关键字..." onfocus="if(this.value=='输入关键字...'){this.value='';}"  onblur="if(this.value==''){this.value='输入关键字...';}" />
+<input type="submit" name="sa" value="搜索" class="button-box"/>
+</form>
+</div>
+
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="content-block">
+
+<div class="col1">
+
+<div class="block clearfix">
+
+<div id="tagcloud">
+
+<span class="tag_level3"><a href="/tags.php?/%E9%86%89%E9%85%92" rel="tag">醉酒</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E9%A3%9F%E5%A0%82" rel="tag">食堂</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%9B%A7" rel="tag">囧</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%BB%93%E5%A9%9A" rel="tag">结婚</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/wsj" rel="tag">wsj</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%83%85%E4%BA%BA%E8%8A%82" rel="tag">情人节</a></span>
+
+<span class="tag_level1"><a href="/tags.php?/%E8%80%81%E5%B8%88" rel="tag">老师</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%8B%97%E7%8B%97" rel="tag">狗狗</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%B1%82%E7%A0%81" rel="tag">求码</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%81%9A%E6%A2%A6" rel="tag">做梦</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/QQ" rel="tag">QQ</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%B0%8F%E5%AD%A6" rel="tag">小学</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%85%AC%E4%BA%A4" rel="tag">公交</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%90%9E%E7%AC%91" rel="tag">搞笑</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%A5%B3%E6%9C%8B%E5%8F%8B" rel="tag">女朋友</a></span>
+
+<span class="tag_level1"><a href="/tags.php?/%E5%8F%A3%E8%AF%AF" rel="tag">口误</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%8F%AD%E4%B8%BB%E4%BB%BB" rel="tag">班主任</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%9D%AF%E5%85%B7" rel="tag">杯具</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%89%93%E9%A3%9E%E6%9C%BA" rel="tag">打飞机</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E8%87%AA%E8%A1%8C%E8%BD%A6" rel="tag">自行车</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E9%83%81%E9%97%B7" rel="tag">郁闷</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%B1%81" rel="tag">屁</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%B0%BF%E5%B0%BF" rel="tag">尿尿</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/TT" rel="tag">TT</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%89%8B%E6%9C%BA" rel="tag">手机</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E9%AB%98%E8%80%83" rel="tag">高考</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E8%AE%A4%E9%94%99%E4%BA%BA" rel="tag">认错人</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/BY" rel="tag">BY</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%84%BF%E5%AD%90" rel="tag">儿子</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%B8%B8%E6%B3%B3" rel="tag">游泳</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%9C%A8%E6%9C%89" rel="tag">木有</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/JJ" rel="tag">JJ</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%88%9D%E4%B8%AD" rel="tag">初中</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%9F%AD%E4%BF%A1" rel="tag">短信</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%B1%82%E8%BF%87" rel="tag">求过</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%90%8C%E5%AD%A6" rel="tag">同学</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E4%BD%9C%E5%BC%8A" rel="tag">作弊</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%B3%97" rel="tag">糗</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%B1%82RP" rel="tag">求RP</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%BD%91%E5%90%A7" rel="tag">网吧</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%B0%8F%E5%AD%A9" rel="tag">小孩</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/CNT" rel="tag">CNT</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E7%94%B5%E8%AF%9D" rel="tag">电话</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%A5%B3%E7%94%9F" rel="tag">女生</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%B0%8F%E6%97%B6%E5%80%99" rel="tag">小时候</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E8%80%81%E5%A9%86" rel="tag">老婆</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E8%80%81%E5%A6%88" rel="tag">老妈</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%90%83%E9%A5%AD" rel="tag">吃饭</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%B1%81%E8%82%A1" rel="tag">屁股</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E7%BE%8E%E5%A5%B3" rel="tag">美女</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%86%9B%E8%AE%AD" rel="tag">军训</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/com" rel="tag">com</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E8%80%83%E8%AF%95" rel="tag">考试</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%A4%A7%E4%BE%BF" rel="tag">大便</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E8%9B%8B%E7%96%BC" rel="tag">蛋疼</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%A0%A1%E5%9B%AD" rel="tag">校园</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%A4%A7%E5%AD%A6" rel="tag">大学</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%B0%B4%E5%B0%AC" rel="tag">尴尬</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E8%8B%B1%E8%AF%AD" rel="tag">英语</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%A2%A6%E8%AF%9D" rel="tag">梦话</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%A4%A7%E5%A7%A8%E5%A6%88" rel="tag">大姨妈</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%86%85%E8%A3%A4" rel="tag">内裤</a></span>
+
+<span class="tag_level1"><a href="/tags.php?/%E5%8E%95%E6%89%80" rel="tag">厕所</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E9%AB%98%E4%B8%AD" rel="tag">高中</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E7%9D%A1%E8%A7%89" rel="tag">睡觉</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%B0%8F%E5%81%B7" rel="tag">小偷</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%94%B5%E6%A2%AF" rel="tag">电梯</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%8D%AB%E7%94%9F%E5%B7%BE" rel="tag">卫生巾</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%90%8D%E5%AD%97" rel="tag">名字</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E4%B8%8A%E5%8E%95%E6%89%80" rel="tag">上厕所</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E4%B8%8A%E8%AF%BE" rel="tag">上课</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%AE%BF%E8%88%8D" rel="tag">宿舍</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E8%80%81%E5%85%AC" rel="tag">老公</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%A6%88%E5%A6%88" rel="tag">妈妈</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%85%AC%E8%BD%A6" rel="tag">公车</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E4%BD%93%E6%A3%80" rel="tag">体检</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E4%BE%BF%E4%BE%BF" rel="tag">便便</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%B4%97%E6%BE%A1" rel="tag">洗澡</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%9C%B0%E9%93%81" rel="tag">地铁</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E8%80%81%E7%88%B8" rel="tag">老爸</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%AD%A6%E6%A0%A1" rel="tag">学校</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E6%B1%82%E4%BA%BA%E5%93%81" rel="tag">求人品</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E8%A3%A4%E5%AD%90" rel="tag">裤子</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%88%B8%E7%88%B8" rel="tag">爸爸</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E7%B3%97%E4%BA%8B" rel="tag">糗事</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%A5%B3%E5%8F%8B" rel="tag">女友</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E5%9C%B0%E9%9C%87" rel="tag">地震</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%9B%B8%E4%BA%B2" rel="tag">相亲</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%9C%A8%E6%9C%89%E6%A0%87%E7%AD%BE" rel="tag">木有标签</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/SY" rel="tag">SY</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E8%AF%AF%E4%BC%9A" rel="tag">误会</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%94%BE%E5%B1%81" rel="tag">放屁</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E8%8F%8A%E8%8A%B1" rel="tag">菊花</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%96%9D%E9%85%92" rel="tag">喝酒</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E5%85%AC%E4%BA%A4%E8%BD%A6" rel="tag">公交车</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/MM" rel="tag">MM</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/%E6%82%B2%E5%89%A7" rel="tag">悲剧</a></span>
+
+<span class="tag_level2"><a href="/tags.php?/ML" rel="tag">ML</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E7%8B%97" rel="tag">狗</a></span>
+
+<span class="tag_level3"><a href="/tags.php?/%E9%BC%BB%E6%B6%95" rel="tag">鼻涕</a></span>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+</div>
+
+
+
+<div class="col2">
+
+<div class="sponsor">
+
+<script src='/plus/ad_js.php?aid=21' language='javascript'></script>
+
+</script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="microblog">
+
+<h3>收听</h3>
+
+<div class="content">
+
+<a href="http://user.qzone.qq.com/1492495058" target="_blank">QQ空间<span>610<em>万</em></span></a><a href="http://t.qq.com/qiushibaike" target="_blank">腾讯微博<span>145<em>万</em></span></a><a href="http://weibo.com/qiushibaike" target="_blank">新浪微博<span>55<em>万</em></span></a><a href="http://mail.qq.com/cgi-bin/bookcol?colid=314" target="_blank">Feed订阅<span>360<em>万</em></span></a>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sponsor">
+
+<script src='/plus/ad_js.php?aid=22' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="tagsblock">
+
+<h3>标签</h3>
+
+<div class="content">
+
+{dede:tag row='30' getall='1' sort='month'}
+      <a href='[field:link/]'>[field:tag /]</a>
+      {/dede:tag}
+<a href="/tags.php">更多...</a>
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sponsor">
+
+<script src='/plus/ad_js.php?aid=23' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="sitelink">
+
+<h3>友情链接</h3>
+
+<div class="content">
+
+{dede:flink linktype='2' row='100'}[field:link /]{/dede:flink}
+
+</div>
+
+</div>
+
+<div class="shadow"></div>
+
+<div id="box">
+
+<div id="float" class="div1">
+
+<div id="float-ad" class="sponsor">
+
+<script src='/plus/ad_js.php?aid=24' language='javascript'></script>
+
+</div>
+
+<div class="shadow"></div>
+
+<div class="toolbar">
+
+<a href="#top" class="back">回到顶部</a><a href="javascript:showSuggestForm()" class="feedback">意见建议</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="baidu-sponsor">
+
+<script src='/plus/ad_js.php?aid=25' language='javascript'></script>
+
+</div>
+
+</div>
+
+</div>
+
+{dede:include filename="foot.htm"/}
+
+<div id="login-form">
+
+<a href="#" class="close"><div class="bti"></div></a>
+
+<div class="ie6-fix"></div>
+
+<div class="col1">
+
+<h1>欢迎回来</h1>
+
+<div class="inputbox">
+
+<form name="userlogin" id="userlogin" action="{dede:global.cfg_memberurl/}/index_do.php" method="POST">
+
+<input type="hidden" name="fmdo" value="login" />
+
+<input type="hidden" name="dopost" value="login" />
+
+<input type="hidden" name="keeptime" value="604800" />
+
+<label for="login">用户名</label>
+
+<input type="text" tabindex="1" name="userid" id="login" class="Txt1" value="" onfocus="if(value=='') {value=''}" onblur="if
+
+
+
+(value=='') {value=''}"/>
+
+<label for="password">密码：(<a href="/member/resetpassword.php">忘记密码？</a>)</label>
+
+<input type="password" tabindex="2" name="pwd" id="password" class="Txt2" value="" onfocus="if(value=='') {value=''}" 
+
+
+
+onblur="if(value=='') {value=''}"/>
+
+</div>
+
+<!--<div id="error"></div>-->
+
+<div class="optionbox"><label for='remember_me'><input type="checkbox" value="checked" checked name="remember_me" 
+
+
+
+id="remember_me"> 记住我</label></div>
+
+<button type="submit">登录</button>
+
+</form>
+
+</div>
+
+<div class="col2">
+
+<h1>创建账号</h1>
+
+<div class="intro">
+
+强热推荐用QQ一键登录、一键注册、方便又省时。<br/><br/>
+
+<a href="javascript:vod(0);" onclick='toQzoneLogin()'><img src="/plus/qzonelogin/img/qq_login.png"></a></div>
+
+<a href="/member/index_do.php?fmdo=user&dopost=regnew" class="button">注册</a>
+
+</div>
+
+</div>
+
+<div id="suggest-form">
+
+<a href="#" class="close"><div class="bti"></div></a>
+
+<div class="ie6-fix"></div>
+
+<div class="form-block">
+
+<h1>请帮助我们进步</h1>
+
+<form method="post" action="/plus/guestbook.php" id="form1">
+
+<input type='hidden' name='action' value='save' /> 
+
+<textarea type="text" id="suggest-text" name="msg" tabindex="1"></textarea>
+
+<button type="submit" onclick="document.getElementById('form1').submit();" >提交</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="{dede:global.cfg_basehost/}/templets/default/js/application.js?v=b3c1e" type="text/javascript"></script>
+
+</body>
+
+</html>

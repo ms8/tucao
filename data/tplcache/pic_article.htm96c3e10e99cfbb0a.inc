@@ -1,0 +1,41 @@
+<?php
+$z[0]=Array("field","",407,430);
+$z[0][4]['name']="seotitle";
+$z[1]=Array("global","",431,457);
+$z[1][4]['name']="cfg_webname";
+$z[2]=Array("field","",498,527);
+$z[2][4]['name']="keywords";
+$z[3]=Array("field","",566,624);
+$z[3][4]['name']="description";
+$z[3][4]['function']="html2text(@me)";
+$z[4]=Array("global","",661,688);
+$z[4][4]['name']="cfg_basehost";
+$z[5]=Array("global","",718,750);
+$z[5][4]['name']="cfg_templets_skin";
+$z[6]=Array("global","",897,929);
+$z[6][4]['name']="cfg_templets_skin";
+$z[7]=Array("global","",991,1023);
+$z[7][4]['name']="cfg_templets_skin";
+$z[8]=Array("global","",1100,1125);
+$z[8][4]['name']="cfg_cmsurl";
+$z[9]=Array("global","",1275,1301);
+$z[9][4]['name']="cfg_webname";
+$z[10]=Array("channel","\r\n<li class=\"menuout\"><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>",1983,2216);
+$z[10][4]['row']="5";
+$z[10][4]['type']="top";
+$z[10][4]['currentstyle']="<li class='menuout'><a id='highlight' href='~typelink~' ~rel~>~typename~</a></li>";
+$z[11]=Array("list","\r\n  <div class='mode'>\r\n    <p class='pic'> \r\n[field:array runphp='yes']@me = (empty(@me['litpic']) ? \"\" : \"<a href='{@me['arcurl']}' class='preview'><img src='{@me['litpic']}' style='height:auto' /></a>\"); [/field:array]\r\n    </p>\r\n    <h3 class='tit'>\r\n    <span><a href=\"[field:arcurl/]\" class=\"title\">[field:title/]</a></span>\r\n    </h3>\r\n  </div>\r\n  ",2754,3146);
+$z[11][4]['pagesize']="40";
+$z[12]=Array("pagelist","",3203,3274);
+$z[12][4]['listitem']="info,index,end,pre,next,pageno";
+$z[12][4]['listsize']="5";
+$z[13]=Array("include","",3295,3330);
+$z[13][4]['filename']="foot.htm";
+$z[14]=Array("global","",3554,3582);
+$z[14][4]['name']="cfg_memberurl";
+$z[15]=Array("global","",5307,5334);
+$z[15][4]['name']="cfg_basehost";
+$z[16]=Array("global","",7174,7200);
+$z[16][4]['name']="cfg_cmspath";
+
+?>
