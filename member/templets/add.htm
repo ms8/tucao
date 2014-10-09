@@ -10,7 +10,7 @@ window.onerror = killerrors;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>发布笑料-饭麻网-www.fanma.cn</title>
+<title>吐槽么</title>
 <link rel="shortcut icon" href="/favicon.ico" />
 <link href='/templets/default/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
 <link href="/templets/default/css/bak.css" rel="stylesheet" type="text/css" />
@@ -111,7 +111,7 @@ function getDigg(aid)
 <a name="top"></a>
 <div class="head">
 <div class="content-block">
-<div class="logo"><a href="/">饭麻网</a></div>
+<div class="logo"><a href="/">吐槽么</a></div>
 <div class="userbar">
 <div class="login hidden">
 </div>
@@ -211,17 +211,22 @@ function getDigg(aid)
 <div class="content-block">
 <div class="menu">
 <ul>
-<li class="menuout"><a href="/">最新</a></li>
+<li class="menuout"><a href="/">首页</a></li>
+    <li class="menuout"><a href='/plus/list.php?tid=1' >吐槽么</a></li>
+    <li class="menuout"><a href='/plus/list.php?tid=10' >热门话题</a></li>
+
+    <!--
 <li class="menuout" onMouseOver="this.className='menuover'" onMouseOut="this.className='menuout'">
 <a href="/click_week" class="submenutitle">人气</a>
 <a href="/click_week" class="submenu">7天内</a>
 <a href="/click_month" class="submenu">30天内</a>
 </li>
-<li class="menuout"><a href='/plus/list.php?tid=1' >文字</a></li>
+
 <li class="menuout"><a href='/plus/list.php?tid=2' >图片</a></li>
 <li class="menuout"><a href='/plus/list.php?tid=4' >图片墙</a></li>
 <li class="menuout"><a id='highlight' href='/member/add.php' >发表</a></li>
 <li class="menuout"><a href='/member/' >会员中心</a></li>
+-->
 </ul>
 </div>
 <div class="search">
@@ -243,7 +248,9 @@ function getDigg(aid)
 <div class="new_article">
 <form id="addcontent" name="addcontent" action="add.php" method="post" enctype="multipart/form-data" onsubmit="return checkSubmit();">
           <input type="hidden" name="dopost" value="save" />
-          <input type="hidden" name="channelid" value="<?php echo $channelid; ?>" />
+          <!--<input type="hidden" name="channelid" value="<?php echo $channelid; ?>" />-->
+          <input type="hidden" name="channelid" value="1" /><!--吐槽的栏目id为1，写死在程序里-->
+          <input type="hidden" name="typeid" value="1" />
 		  <input type="hidden" name="mtypesid" id="mtypesid" value="" />
 		  <input type="hidden" name="description" id="description" value="" />
 		  <input type="hidden" name="litpic" id="litpic" value="" />
@@ -254,10 +261,7 @@ function getDigg(aid)
        PrintAutoFieldsAdd($cInfos['fieldset'],'autofield');
       ?>
 		  </div>
-<textarea id="body" class="original" onclick="inbody();" name="body">您可以在这里发表您自己的或者您听说过的搞笑事，与大家一起分享。
-发表搞笑事不需要登录（不登录只能发表500字以内的糗事，登录后无字数限制并且可以发表图片和视频）。
-您提交的糗事会在我们审核之后发表，审核标准为：必须真实，有笑点。正文中不能包含邮件地址、电话号码、地址等联系信息，不能与政治相关，不包含色情描写，不带有广告性质。另，输入框不支持HTML标签。
-隐私声明：我们不会公开您的IP地址，更没有人能知道您的姓名（如果您没有署上真实姓名），分享是绝对安全的。</textarea>
+<textarea id="body" class="original" onclick="inbody();" name="body">吐吐更健康</textarea>
 <div id="length"></div>
 <script>
 var bodyvle=document.getElementById('body').value;
@@ -272,7 +276,7 @@ document.getElementById('body').value='';
 <label>标题：</label>
 <input type="text" id="title" name="title" size="30">
 </div>
-
+<!--
 <div class="tagbox">
             <label>栏目：</label>
             <?php
@@ -284,12 +288,14 @@ document.getElementById('body').value='';
 			?>
             <span style="color:#F00">*</span>(不能选择带颜色的分类)
 </div>
-
+-->
+<!--
 <div class="tagbox">
 <label>标签：</label>
 <input type="text" size="30" name="tags" id="tags" maxlength="30" />
 <span>（最多3个标签，用","分隔）</span>
 </div>
+ -->
 <script>
 function tsub(){
 if(document.getElementById('body').value==''||bodyvle==document.getElementById('body').value){
@@ -300,7 +306,7 @@ document.getElementById('addcontent').submit();
 }
 </script>
 <br />
-<span>这里只支持发布文字笑话，如需发布视频跟图片请注册登陆后进入麻友中心发布。</span>
+<span>这里只支持发布文字吐槽，如需发布图片请注册登陆后进行吐槽。</span>
 <div class="buttonbox">
 <input type="button" onclick="tsub();" class="submit" id="article_submit" name="commit" value="发表">
 </div>
