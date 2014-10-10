@@ -306,9 +306,9 @@ function SharePanel(tid,types,urls)
 <div class="col1">
 
 
-{dede:sql sql='Select typedir,typename,content from dede_arctype where reid=10 ORDER BY id'}
+{dede:sql sql='Select id,typedir,typename,content from dede_arctype where reid=10 ORDER BY id'}
 <li>
-<a href='[field:typedir/]'>[field:typename/]</a>
+<a href='[field:typedir/]?channel=[field:id/]'>[field:typename/]</a>
 <br/>
 [field:content/]
 </li>
