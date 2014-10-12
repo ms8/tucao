@@ -22,8 +22,8 @@ textarea, input{resize: none;}
 
 button {overflow:visible;width:auto;margin:0;padding:0;border:0 none;outline:none;}
 
-.podigg{ width:450px; float:left; height:32px;}
-
+/*.podigg{ width:450px; float:left; height:32px;}*/
+.podigg{padding-left: 0;}
 
 .detail1{display:none}
 .main .col1 .block:hover .detail1 {
@@ -382,7 +382,7 @@ background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f4
 
 background-image: -webkit-linear-gradient(top,#fff,#f4efe7);}
 
-.toolbar a {display:inline-block; width:49%;padding:10px 0; text-align:center;}
+.toolbar a {display:inline-block; width:48%;padding:10px 0; text-align:center;}
 
 .toolbar .back {border-right-width:1px; border-right-style:solid; border-right-color:#ebe9e4;}
 
@@ -794,4 +794,6 @@ _margin:9px 0 0 9px; /* for IE6 */ }
 .head button{height: 35px;margin: 8px 10px 8px;}
 .navbar-form{max-width: 250px;}
 .hotTopic.list-group{margin-bottom: 0;}
+.hotTopic img{width:100%; }
+.hotTopic h5{color: #444;padding: 10px 0 15px 0;}
 /*.hotTopic .list-group-item{background: url("../images/listbg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);opacity: 1;border:1px solid #c7cacc}*/

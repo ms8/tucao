@@ -1,12 +1,9 @@
 ﻿<!DOCTYPE html>
 <script language="javascript">
-    <!--
-    屏蔽JS错误
     function killerrors() {
         return true;
     }
     window.onerror = killerrors;
-    //-->
 </script>
 <html lang="zh-cn">
 <head>
@@ -15,12 +12,6 @@
     <title>{dede:global.cfg_webname/}</title>
     <meta name="keywords" content="{dede:global.cfg_keywords/}"/>
     <meta name="description" content="{dede:global.cfg_description/}"/>
-    <link rel="shortcut icon" href="{dede:global.cfg_basehost/}/favicon.ico"/>
-    <link href='{dede:global.cfg_templets_skin/}/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet"
-          type="text/css"/>
-    <link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_cmsurl/}/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_templets_skin/}/css/css.css"/>
-    <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/js/bootstrap.min.js"></script>
     <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
     <script language="javascript" type="text/javascript">
         <!--
@@ -118,6 +109,12 @@
         }
         -->
     </script>
+    <link rel="shortcut icon" href="{dede:global.cfg_basehost/}/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_cmsurl/}/css/bootstrap.min.css"/>
+    <link href='{dede:global.cfg_templets_skin/}/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet"
+          type="text/css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_templets_skin/}/css/css.css"/>
+
 </head>
 <body>
 <a name="top"></a>
@@ -206,11 +203,11 @@
                     [field:id runphp='yes'] $aid = @me; $row = $GLOBALS['dsql']->GetOne("Select body From
                     `dede_addonarticle` where aid='$aid' "); @me = "{$row['body']}";[/field:id]
                 </div>
-                <div class="tags"><span class="bti"></span>[field:id runphp='yes'] global $cfg_cmspath; $tags =
-                    GetTags(@me); $revalue = ''; $tags = explode(',', $tags); foreach($tags as $key => $value){
-                    if($value){ $revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a> '; } } @me
-                    = $revalue; [/field:id]</a>
-                </div>
+                <!--<div class="tags"><span class="bti"></span>[field:id runphp='yes'] global $cfg_cmspath; $tags =-->
+                    <!--GetTags(@me); $revalue = ''; $tags = explode(',', $tags); foreach($tags as $key => $value){-->
+                    <!--if($value){ $revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a> '; } } @me-->
+                    <!--= $revalue; [/field:id]</a>-->
+                <!--</div>-->
                 <div class="bar row" id="qiushi_counts_[field:id/]">
                     <DIV class="podigg col-xs-6" id="newdigg[field:id/]">
                         <!--<a href="javascript:;" class="btn btn-default" onclick="postDigg('good',[field:id/]);">({dede:field.goodpost/}) </a>-->
@@ -283,18 +280,10 @@
             </div>
         </div>
         <div class="col-md-3 hidden-xs hidden-sm">
-            <div class="sponsor">
-                <script src='/plus/ad_js.php?aid=21' language='javascript'></script>
-            </div>
-            <div class="shadow"></div>
-            <!--<div class="block">-->
-                <!--<div class="subpage-title noline">-->
-                    <!--<h5>关注我们</h5>-->
-                <!--</div>-->
-                <!--<ul class="social-links">-->
-                    <!--<li class="weixin"><img  src="/templets/default/images/erweima.jpg" alt="快入职微信号"/></li>-->
-                <!--</ul>-->
+            <!--<div class="sponsor">-->
+                <!--<script src='/plus/ad_js.php?aid=21' language='javascript'></script>-->
             <!--</div>-->
+            <div class="shadow"></div>
             <form id="formsearch" class="" name="formsearch" action="/plus/search.php">
                 <div class="input-group">
                     <input type="hidden" value="0" name="kwtype">
@@ -307,13 +296,10 @@
                 </div><!-- /input-group -->
             </form>
             <ul class="list-group hotTopic">
-                <!--<li class="list-group-item">-->
-                    <!--<img  src="/templets/default/images/erweima.jpg" alt="快入职微信号"/>-->
-                <!--</li>-->
-                <a class="list-group-item list-group-item-danger" href="#">码农是妞绝缘体</a>
-                <a class="list-group-item list-group-item-warning"  href="#">改需求啊改需求</a>
-                <a class="list-group-item list-group-item-info"  href="#">外包就是消耗青春</a>
-                <a class="list-group-item list-group-item-success"  href="#">更多 >></a>
+                {dede:sql sql='Select id,typedir,typename,content from dede_arctype where reid=10 ORDER BY id'}
+                    <a class="list-group-item" href='[field:typedir/]?channel=[field:id/]'><h5 class="text-left">[field:typename/]</h5>[field:content/]</a>
+                {/dede:sql}
+                <a class="list-group-item list-group-item-danger"  href="#">更多话题 >></a>
             </ul>
             <!--<div class="microblog">-->
                 <!--<h3>收听</h3>-->
@@ -361,9 +347,9 @@
                         <img  src="/templets/default/images/erweima.jpg" alt="快入职微信号"/>
                         <p class="text-center">关注微信公众号</p>
                     </div>
-                    <div id="float-ad" class="sponsor">
-                        <script src='/plus/ad_js.php?aid=24' language='javascript'></script>
-                    </div>
+                    <!--<div id="float-ad" class="sponsor">-->
+                        <!--<script src='/plus/ad_js.php?aid=24' language='javascript'></script>-->
+                    <!--</div>-->
                     <div class="shadow"></div>
                     <div class="toolbar">
                         <a href="#top" class="back">回到顶部</a>
@@ -436,6 +422,9 @@
 </body>
 </html>
 <script src="./templets/default/js/application.js?v=b3c1e" type="text/javascript"></script>
+<!--<script src="js/jquery.js" type="text/javascript"></script>-->
+<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/js/bootstrap.min.js"></script>
+
 <script>function CheckLogin2() {
     var taget_obj = document.getElementById('_userlogin');
     myajax = new DedeAjax(taget_obj, false, false, '', '', '');

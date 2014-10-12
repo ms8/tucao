@@ -29,11 +29,12 @@ window.onerror = killerrors;
 <meta name="description" content="{dede:field name='description' function='html2text(@me)'/}"/>
 
 <link rel="shortcut icon" href="{dede:global.cfg_basehost/}/favicon.ico" />
+<link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_cmsurl/}/css/bootstrap.min.css"/>
 
 <link href='{dede:global.cfg_templets_skin/}/css/style_web.css?v=f3a5c' media="screen, projection" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" type="text/css" media="all" href="{dede:global.cfg_templets_skin/}/css/css.css"/>
-
+<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/js/bootstrap.min.js"></script>
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
 
 <script language="javascript" type="text/javascript">
@@ -241,193 +242,178 @@ function SharePanel(tid,types,urls)
 <body>
 
 <a name="top"></a>
+<div class="navbar navbar-inverse" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">首页</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                {dede:channel row='5' type='top' currentstyle="
+                <li class='menuout'><a id='highlight' href='~typelink~' ~rel~>~typename~</a></li>
+                "}
+                <li class="menuout"><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+                {/dede:channel}
+            </ul>
 
-<div class="head">
+            <div class="head  navbar-right">
+                <button class="btn btn-danger" href="/member/add.php">吐++</button>
+                <!--<div class="content-block">-->
+                <!--<div class="logo"><a href="/">{dede:global.cfg_webname/}</a></div>-->
 
-<div class="content-block">
-
-<div class="logo"><a href="/">{dede:global.cfg_webname/}</a></div>
-
-<div class="userbar">
-
-<div class="login hidden">
-
+                <div class="userbar">
+                    <div class="login hidden">
+                    </div>
+                    <div class="logout" id="_userlogin">
+                        <a href="javascript:vote2(-1)">登录</a>
+                        <a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a>
+                    </div>
+                    <!-- /userlogin -->
+                </div>
+                <!--</div>-->
+            </div>
+            <!--<ul class="nav navbar-nav navbar-right">-->
+            <!--<li>-->
+            <!--<a href="v3.bootcss.com/about/index.html">关于</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+        </nav>
+    </div>
 </div>
 
-<div class="logout" id="_userlogin">
 
-<a href="javascript:vote2(-1)">登录</a>
+<div class="container">
+    <div class="row">
 
-<a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a>
+        <div class="col-md-9">
 
-</div> <!-- /userlogin-->
-</div>
 
-</div>
+        {dede:sql sql='Select id,typedir,typename,content from dede_arctype where reid=10 ORDER BY id'}
+        <li>
+        <a href='[field:typedir/]?channel=[field:id/]'>[field:typename/]</a>
+        <br/>
+        [field:content/]
+        </li>
+        {/dede:sql}
 
-</div>
 
-</div>
+        <!--{dede:channelartlist typeid='10,10'}
+        {dede:channel type='son' noself='yes'}
+         <a href="[field:typelink/]">[field:id/][field:typename/]</a><br/>
+        {/dede:channel}
+        {/dede:channelartlist}
+        -->
 
-<div class="menu-bar clearfix">
 
-<div class="content-block">
+        </div>
 
-<div class="menu">
+        <div class="col-md-3">
 
-<ul>
+        <div class="sponsor">
 
+        <script src='/plus/ad_js.php?aid=21' language='javascript'></script>
 
-{dede:channel row='5' type='top' currentstyle="<li class='menuout'><a id='highlight' href='~typelink~' ~rel~>~typename~</a></li>"}
+        </div>
 
-<li class="menuout"><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>{/dede:channel}
+        <div class="shadow"></div>
 
-</ul>
+        <div class="microblog">
 
-</div>
+        <h3>收听</h3>
 
-<div class="search">
+        <div class="content">
 
-<form id="formsearch" name="formsearch" action="/plus/search.php">
-<input type="hidden" value="0" name="kwtype">
-<input name="q" type="text" class="input-box" id="search-keyword" value="输入关键字..." onfocus="if(this.value=='输入关键字...'){this.value='';}"  onblur="if(this.value==''){this.value='输入关键字...';}" />
-<input type="submit" name="sa" value="搜索" class="button-box"/>
-</form>
+        <a href="http://user.qzone.qq.com/1492495058" target="_blank">QQ空间<span>610<em>万</em></span></a><a href="http://t.qq.com/qiushibaike" target="_blank">腾讯微博<span>145<em>万</em></span></a><a href="http://weibo.com/qiushibaike" target="_blank">新浪微博<span>55<em>万</em></span></a><a href="http://mail.qq.com/cgi-bin/bookcol?colid=314" target="_blank">Feed订阅<span>360<em>万</em></span></a>
 
-</div>
-</div>
+        </div>
 
-</div>
+        </div>
 
-<div class="main">
+        <div class="shadow"></div>
 
-<div class="content-block">
+        <div class="sponsor">
 
-<div class="col1">
+        <script src='/plus/ad_js.php?aid=22' language='javascript'></script>
 
+        </div>
 
-{dede:sql sql='Select id,typedir,typename,content from dede_arctype where reid=10 ORDER BY id'}
-<li>
-<a href='[field:typedir/]?channel=[field:id/]'>[field:typename/]</a>
-<br/>
-[field:content/]
-</li>
-{/dede:sql}
+        <div class="shadow"></div>
 
+        <div class="tagsblock">
 
-<!--{dede:channelartlist typeid='10,10'}
-{dede:channel type='son' noself='yes'}
- <a href="[field:typelink/]">[field:id/][field:typename/]</a><br/>
-{/dede:channel}
-{/dede:channelartlist} 
--->
+        <h3>标签</h3>
 
+        <div class="content">
 
-</div>
+        {dede:tag row='30' getall='1' sort='month'}
+              <a href='[field:link/]'>[field:tag /]</a>
+              {/dede:tag}
 
-<div class="col2">
+        <a href="/tags.php">更多...</a>
 
-<div class="sponsor">
+        </div>
 
-<script src='/plus/ad_js.php?aid=21' language='javascript'></script>
+        </div>
 
-</script>
+        <div class="shadow"></div>
 
-</div>
+        <div class="sponsor">
 
-<div class="shadow"></div>
+        <script src='/plus/ad_js.php?aid=23' language='javascript'></script>
+        </div>
 
-<div class="microblog">
+        <div class="shadow"></div>
 
-<h3>收听</h3>
+        <div class="sitelink">
 
-<div class="content">
+        <h3>友情链接</h3>
 
-<a href="http://user.qzone.qq.com/1492495058" target="_blank">QQ空间<span>610<em>万</em></span></a><a href="http://t.qq.com/qiushibaike" target="_blank">腾讯微博<span>145<em>万</em></span></a><a href="http://weibo.com/qiushibaike" target="_blank">新浪微博<span>55<em>万</em></span></a><a href="http://mail.qq.com/cgi-bin/bookcol?colid=314" target="_blank">Feed订阅<span>360<em>万</em></span></a>
+        <div class="content">
 
-</div>
+        {dede:flink linktype='2' row='100'}[field:link /]{/dede:flink}
 
-</div>
+        </div>
 
-<div class="shadow"></div>
+        </div>
 
-<div class="sponsor">
+        <div class="shadow"></div>
 
-<script src='/plus/ad_js.php?aid=22' language='javascript'></script>
+        <div id="box">
 
-</div>
+        <div id="float" class="div1">
 
-<div class="shadow"></div>
+        <div id="float-ad" class="sponsor">
 
-<div class="tagsblock">
+        <script src='/plus/ad_js.php?aid=24' language='javascript'></script>
 
-<h3>标签</h3>
+        </div>
 
-<div class="content">
+        <div class="shadow"></div>
 
-{dede:tag row='30' getall='1' sort='month'}
-      <a href='[field:link/]'>[field:tag /]</a>
-      {/dede:tag}
+        <div class="toolbar">
 
-<a href="/tags.php">更多...</a>
+        <a href="#top" class="back">回到顶部</a><a href="javascript:showSuggestForm()" class="feedback">意见建议</a>
 
-</div>
+        </div>
 
-</div>
+        </div>
 
-<div class="shadow"></div>
+        </div>
 
-<div class="sponsor">
+        </div>
 
-<script src='/plus/ad_js.php?aid=23' language='javascript'></script>
-</div>
+    <div class="baidu-sponsor">
+    <script src='/plus/ad_js.php?aid=25' language='javascript'></script>
 
-<div class="shadow"></div>
+    </div>
 
-<div class="sitelink">
-
-<h3>友情链接</h3>
-
-<div class="content">
-
-{dede:flink linktype='2' row='100'}[field:link /]{/dede:flink}
-
-</div>
-
-</div>
-
-<div class="shadow"></div>
-
-<div id="box">
-
-<div id="float" class="div1">
-
-<div id="float-ad" class="sponsor">
-
-<script src='/plus/ad_js.php?aid=24' language='javascript'></script>
-
-</div>
-
-<div class="shadow"></div>
-
-<div class="toolbar">
-
-<a href="#top" class="back">回到顶部</a><a href="javascript:showSuggestForm()" class="feedback">意见建议</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="baidu-sponsor">
-<script src='/plus/ad_js.php?aid=25' language='javascript'></script>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 
@@ -461,7 +447,6 @@ function SharePanel(tid,types,urls)
 
 <input type="password" tabindex="2" name="pwd" id="password" class="Txt2" value="" onfocus="if(value=='') {value=''}" onblur="if(value=='') {value=''}"/>
 
-</div>
 
 <!--<div id="error"></div>-->
 
@@ -513,7 +498,7 @@ function SharePanel(tid,types,urls)
 
 </div>
 
-</body>
+</div>
 
 </html>
 
