@@ -296,7 +296,7 @@
                 </div><!-- /input-group -->
             </form>
             <ul class="list-group hotTopic">
-                {dede:sql sql='Select id,typedir,typename,content from dede_arctype where reid=10 ORDER BY id'}
+                {dede:sql sql='Select id,typedir,typename,content from dede_arctype where reid=10 ORDER BY id limit 0,3'}
                     <a class="list-group-item" href='[field:typedir/]?channel=[field:id/]'><h5 class="text-left">[field:typename/]</h5>[field:content/]</a>
                 {/dede:sql}
                 <a class="list-group-item list-group-item-danger"  href="/plus/list.php?tid=10">更多话题 >></a>
