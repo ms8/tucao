@@ -251,7 +251,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">首页</a>
+            <!--<a class="navbar-brand" href="/">首页</a>-->
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
@@ -295,7 +295,7 @@
             <div class="row">
                 {dede:sql sql='Select id,typedir,typename,description,content from dede_arctype where reid=10 ORDER BY id limit 0,6 '}
                 <div class="col-md-6">
-                    <a class="topic" href='[field:typedir/]?channel=[field:id/]'>
+                    <a class="topic" href='[field:typedir/]?tid=[field:id/]'>
                         <div class="topic-avatar" >[field:content/]</div>
                         <h5 class="topic-title">[field:typename/]</h5>
                         <div class="topic-desc">[field:description/]</div>
