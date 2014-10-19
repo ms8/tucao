@@ -166,7 +166,19 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9 topicDetail">
+            {dede:sql sql='Select id,description,typename,content from dede_arctype where id=~id~ }
+            <div class="media block topicDetail-title">
+                <a href="#" class="pull-left">
+                    [field:content/]
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">[field:typename/]</h4>
+                    [field:description/]
+                </div>
+            </div>
+            {/dede:sql}
+
             {dede:list pagesize='5'}
             <div class="block untagged" id='qiushi_tag_[field:id/]'>
                 <div class="detail1"><a href="[field:arcurl/]" title="[field:title /]" target="_blank"></a></div>

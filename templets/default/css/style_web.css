@@ -14,7 +14,7 @@ ol,ul { list-style:none; }
 
 caption,th { text-align:left; } 
 
-h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; } 
+/*h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; } */
 
 abbr,acronym { border:0; } 
 
@@ -805,4 +805,10 @@ _margin:9px 0 0 9px; /* for IE6 */ }
     line-height: 20px;
     overflow: hidden;
     padding: 4px 15px 0 124px;}
+.topicDetail .block{margin-bottom: 0;border-bottom: 1px solid #ccc;}
+/*.topicDetail-title{padding: 0;}*/
+.topicDetail-title .media-heading{margin-bottom: 15px;}
+.topicDetail-title > .pull-left{margin-right: 20px;}
+.topicDetail-title  img{width: 200px;}
+.topicDetail-title .media-body{line-height: 25px;}
 /*.hotTopic .list-group-item{background: url("../images/listbg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);opacity: 1;border:1px solid #c7cacc}*/
